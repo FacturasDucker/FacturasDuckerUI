@@ -3,12 +3,11 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LoaderService } from './shared/services/loader.service';
-import { NavBarComponent } from "./shared/components/navBar/navBar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoaderComponent, NavBarComponent],
+  imports: [RouterOutlet, LoaderComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
