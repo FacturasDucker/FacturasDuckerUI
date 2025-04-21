@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
+// src/app/app.component.ts
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LoaderService } from './shared/services/loader.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [RouterOutlet, LoaderComponent],
+  template: `
+    @if (loaderService.isLoading()) {
+      <app-loader [fullScreen]="true" [message]="loaderService.loadingMessage()"></app-loader>
+    }
+    <router-outlet/>
+  `,
 })
 export class AppComponent {
   title = 'FacturasDucker';
+
+  // Inyección de dependencias usando inject() y exposición directa del servicio
+  protected loaderService = inject(LoaderService);
 }
