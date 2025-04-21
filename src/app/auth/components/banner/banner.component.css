@@ -1,0 +1,38 @@
+.ban-login {
+    background-image: url('/img/login_ban.webp');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Overlay oscuro para mejorar la legibilidad del texto */
+  .ban-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+  }
+  
+  .content-wrapper {
+    position: relative;
+    z-index: 2; 
+    max-width: 32rem; 
+  }
+  
+
+  
+  :host {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }

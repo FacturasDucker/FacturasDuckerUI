@@ -2,11 +2,13 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoaderService } from '../../../shared/services/loader.service';
+import { BannerComponent } from "../../components/banner/banner.component";
+import { LoginFormComponent } from "../../components/login-form/login-form.component";
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, BannerComponent, LoginFormComponent],
   templateUrl: './login-page.component.html'
 })
 export default class LoginPageComponent {
