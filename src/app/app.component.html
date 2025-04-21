@@ -1,1 +1,7 @@
+
+<app-nav-bar/>
+
+@if (loaderService.isLoading()) {
+  <app-loader [fullScreen]="true" [message]="loaderService.loadingMessage()"></app-loader>
+}
 <router-outlet/>

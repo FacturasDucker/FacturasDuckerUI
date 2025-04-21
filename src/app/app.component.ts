@@ -3,17 +3,13 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LoaderService } from './shared/services/loader.service';
+import { NavBarComponent } from "./shared/components/navBar/navBar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoaderComponent],
-  template: `
-    @if (loaderService.isLoading()) {
-      <app-loader [fullScreen]="true" [message]="loaderService.loadingMessage()"></app-loader>
-    }
-    <router-outlet/>
-  `,
+  imports: [RouterOutlet, LoaderComponent, NavBarComponent],
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   title = 'FacturasDucker';
