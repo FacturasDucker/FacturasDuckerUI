@@ -8,12 +8,7 @@ import { LoaderService } from './shared/services/loader.service';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, LoaderComponent],
-  template: `
-    @if (loaderService.isLoading()) {
-      <app-loader [fullScreen]="true" [message]="loaderService.loadingMessage()"></app-loader>
-    }
-    <router-outlet/>
-  `,
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   title = 'FacturasDucker';
