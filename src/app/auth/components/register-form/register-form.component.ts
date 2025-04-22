@@ -4,18 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-register-form',
   standalone: true,
   imports: [CommonModule, FormsModule,RouterLink],
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.css']
 })
-export class LoginFormComponent {
+export class RegisterFormComponent {
   email: string = '';
   password: string = '';
+  confirmPassword: string = '';
 
   onSubmit() {
-    // Aquí puedes implementar la lógica de login
-    console.log('Intentando iniciar sesión con:', this.email);
+
+    console.log('Intentando registrar con:', this.email);
   }
 }
