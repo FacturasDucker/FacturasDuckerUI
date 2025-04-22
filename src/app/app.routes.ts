@@ -4,6 +4,8 @@ import { RegisterPageComponent } from './auth/pages/register-page/register-page.
 import { TestPageComponent } from './test/test-page/test-page.component';
 import { LandingPageComponent } from './landing-feature/pages/landing-page/landing-page.component';
 import { MainViewPageComponent } from './mainView-feature/page/mainView-page/mainView-page.component';
+import { RecoveryProcessPageComponent } from './recoveryProcess/pages/recoveryProcess-page/recoveryProcess-page.component';
+import { FaqComponent } from './faq/fap';
 import { ProccessBillPageComponent } from './proccess-bill/pages/proccess-bill-page/proccess-bill-page.component';
 
 export const routes: Routes = [
@@ -28,7 +30,16 @@ export const routes: Routes = [
     component: MainViewPageComponent,
   },
   {
+    path: 'recovery',
+    component: RecoveryProcessPageComponent
+  },
+  {
+    path:'faq',
+    component: FaqComponent
+  },
+  {
     path:"billproccess",
     component:ProccessBillPageComponent
   }
+
 ];

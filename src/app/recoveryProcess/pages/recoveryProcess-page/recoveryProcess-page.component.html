@@ -1,0 +1,25 @@
+<!-- pages/recoveryProcess-page/recoveryProcess-page.component.html -->
+
+<app-nav-bar-home/>
+
+<div class="container mx-auto px-4 py-6 max-w-5xl">
+  <div class="mb-6">
+    <span class="text-sm text-gray-500">INICIO / Administración de clientes</span>
+    <h1 class="text-3xl font-bold text-gray-900 mt-2">Recuperación de Factura</h1>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md">
+    <!-- Nuevo control flow con @if, @else (Angular 17+) -->
+    @if (currentState() === RecoveryProcessState.PERSONAL_DATA) {
+      <app-personal-data-form
+        (formSubmit)="handleFormSubmit($event)"
+      ></app-personal-data-form>
+    } @else if (currentState() === RecoveryProcessState.LOADING) {
+      <app-loading-state></app-loading-state>
+    } @else if (currentState() === RecoveryProcessState.INVOICE_READY) {
+      <app-invoice-ready
+        (restart)="restartProcess()"
+      ></app-invoice-ready>
+    }
+  </div>
+</div>

@@ -7,7 +7,14 @@ import { BreadcrumbNavigationComponent } from "../../components/breadcrumbNaviga
 
 @Component({
   selector: 'app-main-view-page',
-  imports: [NavBarHomeComponent, TableComponent, SearchAndFilterComponent, PageTitleAndButtonsComponent, BreadcrumbNavigationComponent],
+  standalone: true,
+  imports: [
+    NavBarHomeComponent,
+    TableComponent,
+    SearchAndFilterComponent,
+    PageTitleAndButtonsComponent,
+    BreadcrumbNavigationComponent
+  ],
   templateUrl: './mainView-page.component.html',
 })
 export class MainViewPageComponent { }

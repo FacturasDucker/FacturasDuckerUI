@@ -1,0 +1,41 @@
+<!-- components/invoice-ready/invoice-ready.component.html -->
+
+<div class="w-full p-6">
+  <div class="mb-6">
+    <p class="text-lg font-semibold">Verifica que todos tus datos personales sean correctos</p>
+    <p class="text-gray-600 text-sm">Este proceso puede tardar hasta cinco minutos, si lo desea puede buscar su factura en el: MÓDULO DE RECUPERACIÓN</p>
+  </div>
+
+  <div class="border border-gray-200 rounded-lg p-6">
+    <div class="mb-4">
+      <h2 class="text-2xl font-bold">Tu factura está lista</h2>
+      <p class="font-medium text-gray-700">¡Gracias por tu preferencia!</p>
+    </div>
+
+    <p class="mb-6 text-gray-700">
+      Su solicitud de Comprobante Fiscal Digital por Internet (CFDI) se ha recibido exitosamente, dentro de las siguientes 72 horas, recibirá los archivos correspondientes en su cuenta de correo electrónico {{ emailCliente }} que nos proporcionó.
+    </p>
+
+    <div class="flex items-start gap-4 mb-8">
+      <div class="flex-shrink-0">
+        <img src="assets/zip-icon.png" alt="Archivo ZIP" class="w-10 h-10 object-contain">
+      </div>
+      <p class="text-gray-700">Descarga el archivo zip donde encontrarás tu archivo .pdf y .xml, en caso de no poder descargarlo consulta en recuperación</p>
+    </div>
+
+    <div class="flex gap-4">
+      <button
+        (click)="downloadInvoice()"
+        class="bg-orange-500 text-white font-medium py-2 px-6 rounded hover:bg-orange-600 transition duration-300 ease-in-out"
+      >
+        Descargar archivos
+      </button>
+      <button
+        (click)="restartProcess()"
+        class="bg-black text-white font-medium py-2 px-6 rounded hover:bg-gray-800 transition duration-300 ease-in-out"
+      >
+        Recuperación
+      </button>
+    </div>
+  </div>
+</div>
