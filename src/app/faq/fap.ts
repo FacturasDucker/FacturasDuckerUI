@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavBarHomeComponent } from '../shared/components/navBarHome/navBarHome.component';
 
 interface FaqItem {
   id: string;
@@ -25,9 +26,9 @@ interface FaqData {
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule , NavBarHomeComponent],
   templateUrl: './faq.component.html',
-  
+
 })
 export class FaqComponent implements OnInit {
   categories: Category[] = [

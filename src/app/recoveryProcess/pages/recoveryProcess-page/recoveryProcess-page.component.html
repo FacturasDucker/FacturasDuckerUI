@@ -2,13 +2,13 @@
 
 <app-nav-bar-home/>
 
-<div class="container mx-auto px-4 py-6 max-w-5xl">
+<div class="container mx-15  py-6 max-w-5xl w-full">
   <div class="mb-6">
     <span class="text-sm text-gray-500">INICIO / Administración de clientes</span>
     <h1 class="text-3xl font-bold text-gray-900 mt-2">Recuperación de Factura</h1>
   </div>
 
-  <div class="bg-white rounded-lg shadow-md">
+  <div class="">
     <!-- Nuevo control flow con @if, @else (Angular 17+) -->
     @if (currentState() === RecoveryProcessState.PERSONAL_DATA) {
       <app-personal-data-form
