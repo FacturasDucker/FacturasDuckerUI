@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 })
 export class LinkeablesComponent {
   navLinks = [
-    { label: 'INICIO', route: '/inicio' },
-    { label: 'CHATBOT', route: '/chatbot' },
-    { label: 'CONTACTO', route: '/contacto' },
-    { label: 'GFA', route: '/gfa' }
+    { label: 'INICIO', route: 'main' },
+    { label: 'CHATBOT', route: 'faq' },
+    { label: 'CONTACTO', route: 'contacto' },
+    { label: 'GFA', route: 'gfa' }
   ];
 }
