@@ -1,0 +1,52 @@
+:host {
+    display: block;
+    width: 100%;
+  }
+  
+
+  .relative {
+    position: relative;
+  }
+  
+  .whitespace-nowrap {
+    white-space: normal;
+    text-align: center;
+    max-width: 110px;
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+  
+
+  @media (max-width: 640px) {
+    .whitespace-nowrap {
+      max-width: 70px;
+      font-size: 0.65rem;
+    }
+    
+    .w-8, .h-8 {
+      width: 1.75rem !important;
+      height: 1.75rem !important;
+    }
+  }
+  
+
+  button {
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(252, 117, 22, 0.3);
+  }
+  
+  
+  .transition-all {
+    transition: all 0.3s ease-in-out;
+  }
+  
+
+  .min-h-48 {
+    min-height: 12rem;
+  }

@@ -1,0 +1,31 @@
+<div class="w-full flex flex-col">
+    <app-nav-bar-home/>
+    <main class="w-full flex-col px-14 mb-5">
+      <header-section-bill/>
+      <div class="mt-2"></div>
+      
+      <app-stepper 
+        [steps]="mySteps"
+        [currentStep]="activeStep"
+        (stepChange)="onStepChange($event)"
+        (upload)="onUpload()"
+        (complete)="onComplete()">
+        
+     
+        <ng-template #content1>
+          <situation-fiscal-template/>
+        </ng-template>
+
+        <ng-template #content2>
+            <bill-verificacion-template/>
+          </ng-template>
+
+          <ng-template #content3>
+            <app-information-ticket-template/>
+          </ng-template>
+
+
+    
+      </app-stepper>
+    </main>
+  </div>

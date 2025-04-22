@@ -8,7 +8,7 @@ import { LoginFormComponent } from "../../components/login-form/login-form.compo
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [RouterLink, BannerComponent, LoginFormComponent],
+  imports: [BannerComponent, LoginFormComponent],
   templateUrl: './login-page.component.html'
 })
 export default class LoginPageComponent {
