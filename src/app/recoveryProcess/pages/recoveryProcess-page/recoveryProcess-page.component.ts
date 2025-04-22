@@ -20,20 +20,56 @@ import { NavBarHomeComponent } from "../../../shared/components/navBarHome/navBa
     LoadingStateComponent,
     InvoiceReadyComponent,
     NavBarHomeComponent
-]
+  ]
 })
 export class RecoveryProcessPageComponent {
   // Enumeración para facilitar el acceso a los estados en el template
   readonly RecoveryProcessState = RecoveryProcessState;
 
-  // Estado actual del proceso usando signal (Angular 17+)
-  currentState = signal<RecoveryProcessState>(RecoveryProcessState.PERSONAL_DATA);
+  // Estado actual del proceso usando signal - inicializamos directamente con el estado de carga
+  currentState = signal<RecoveryProcessState>(RecoveryProcessState.LOADING);
 
   // Datos del usuario
   userData = signal<PersonalData>({});
 
   // Usando inject() en lugar de constructor
   private invoiceRecoveryService = inject(InvoiceRecoveryService);
+
+  // Método para inicializar el componente
+  ngOnInit(): void {
+    // Aquí puedes iniciar una búsqueda automática si es necesario
+    this.simulateLoadingProcess();
+  }
+
+  // Método para simular el proceso de carga
+  simulateLoadingProcess(): void {
+    // Definimos datos de ejemplo para la simulación
+    const demoData: PersonalData = {
+      empresa: 'Boletos de Autobús',
+      rfcCliente: 'GOMR220829EV8',
+      token: '4289089289EV91',
+      numeroGuia: '37536'
+    };
+
+    // Establecemos los datos del usuario
+    this.userData.set(demoData);
+
+    // Llamamos al servicio para simular la recuperación
+    this.invoiceRecoveryService.recoverInvoice(demoData).subscribe({
+      next: (success) => {
+        if (success) {
+          this.currentState.set(RecoveryProcessState.INVOICE_READY);
+        } else {
+          // En caso de error, pasamos al formulario de datos
+          this.currentState.set(RecoveryProcessState.PERSONAL_DATA);
+        }
+      },
+      error: (err) => {
+        console.error('Error al recuperar la factura:', err);
+        this.currentState.set(RecoveryProcessState.PERSONAL_DATA);
+      }
+    });
+  }
 
   // Maneja el envío del formulario de datos personales
   handleFormSubmit(data: PersonalData): void {
@@ -48,13 +84,11 @@ export class RecoveryProcessPageComponent {
         } else {
           // Manejar caso de error
           this.currentState.set(RecoveryProcessState.PERSONAL_DATA);
-          // Aquí se podría mostrar un mensaje de error
         }
       },
       error: (err) => {
         console.error('Error al recuperar la factura:', err);
         this.currentState.set(RecoveryProcessState.PERSONAL_DATA);
-        // Aquí se podría mostrar un mensaje de error
       }
     });
   }
