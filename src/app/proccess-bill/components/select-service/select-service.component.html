@@ -1,0 +1,29 @@
+<div>
+    <h3 class="text-lg font-medium mb-3">Selecciona la opción que deseas facturar</h3>
+    
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Servicio</label>
+      <div class="relative">
+        <select 
+        class="block w-full py-2 pl-4 pr-10 border border-gray-300 rounded-md appearance-none 
+               focus:outline-none focus:ring-yellow-400 focus:border-[#FC7516] text-[#D5D5D5] 
+               bg-white shadow-sm shadow-black/10"
+        [ngModel]="selectedService()"
+        (change)="onServiceChange($event)">
+        @for (type of typeFacturations(); track $index) {
+          <option 
+            [value]="type" 
+            class="text-[#D5D5D5]">
+            {{type}}
+          </option>
+        }
+      </select>
+      
+        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <svg class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>

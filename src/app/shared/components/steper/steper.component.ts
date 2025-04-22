@@ -1,4 +1,3 @@
-// stepper.component.ts
 import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,18 +10,21 @@ export interface StepItem {
 @Component({
   selector: 'app-stepper',
   standalone: true,
-  imports: [CommonModule], // Importando CommonModule para poder usar ngTemplateOutlet
+  imports: [CommonModule],
   templateUrl: './steper.component.html',
+  styleUrls: ['./stepper.component.css']
 })
 export class StepperComponent {
   @Input() steps: StepItem[] = [
-    { value: 1, header: 'Header I', content: 'Content I' },
-    { value: 2, header: 'Header II', content: 'Content II' },
-    { value: 3, header: 'Header III', content: 'Content III' }
+    { value: 1, header: 'Datos básicos', content: 'Paso 1' },
+    { value: 2, header: 'Confirmacion', content: 'Paso 2' },
+    { value: 3, header: 'Detalles token', content: 'Paso 3' },
+    { value: 4, header: 'Confirmación', content: 'Paso 4' }
   ];
   
   @Input() currentStep = 1;
   @Output() stepChange = new EventEmitter<number>();
+  @Output() complete = new EventEmitter<void>();
 
   // Referencias a las plantillas de contenido personalizado
   @ContentChild('content1') content1?: TemplateRef<any>;
@@ -41,6 +43,10 @@ export class StepperComponent {
 
   isCompleted(step: number): boolean {
     return this.currentStep > step;
+  }
+  
+  onComplete(): void {
+    this.complete.emit();
   }
   
   // Método para obtener la plantilla correspondiente al paso actual

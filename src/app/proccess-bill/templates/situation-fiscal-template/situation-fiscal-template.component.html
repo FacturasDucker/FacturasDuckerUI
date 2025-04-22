@@ -1,0 +1,15 @@
+<section class="w-full flex-col">
+    <h3 class="text-xl font-semibold">Constancia de situación fiscal</h3>
+    
+    <main class="w-full mt-4 flex flex-col md:flex-row gap-6">
+      <!-- Primera sección: Componente de carga de constancia fiscal -->
+      <section class="w-full md:w-1/2">
+        <app-upload-fiscal (fileUploaded)="handleFileUploaded($event)"></app-upload-fiscal>
+      </section>
+  
+      <!-- Segunda sección: Selección de servicio -->
+      <section class="w-full md:w-1/2">
+        <select-service-bill/>
+      </section>
+    </main>
+  </section>
