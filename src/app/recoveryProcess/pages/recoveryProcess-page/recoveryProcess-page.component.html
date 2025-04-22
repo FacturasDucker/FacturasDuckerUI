@@ -1,15 +1,19 @@
 <!-- pages/recoveryProcess-page/recoveryProcess-page.component.html -->
-
 <app-nav-bar-home/>
-
-<div class="container mx-15  py-6 max-w-5xl w-full">
-  <div class="mb-6">
-    <span class="text-sm text-gray-500">INICIO / Administración de clientes</span>
-    <h1 class="text-3xl font-bold text-gray-900 mt-2">Recuperación de Factura</h1>
+<div class="px-14">
+  <div class="py-6">
+    <div class="flex items-center text-sm text-gray-500">
+      <span>Inicio</span>
+      <span class="mx-1">/</span>
+      <span class="text-amber-500">Administración de clientes</span>
+    </div>
+    <h1 class="text-4xl font-bold text-gray-900 mt-2">Recuperación de Factura</h1>
+    <p class="text-lg font-medium mt-4">Verifica que todos tus datos personales sean correctos</p>
+    <p class="text-gray-600 text-sm mt-1">Carga tu constancia de situación fiscal para poder cargar tus datos de manera más óptima</p>
   </div>
 
-  <div class="">
-    <!-- Nuevo control flow con @if, @else (Angular 17+) -->
+  <!-- Componentes según el estado -->
+  <div class="mt-8">
     @if (currentState() === RecoveryProcessState.PERSONAL_DATA) {
       <app-personal-data-form
         (formSubmit)="handleFormSubmit($event)"

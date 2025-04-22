@@ -1,67 +1,59 @@
 <!-- components/personal-data-form/personal-data-form.component.html -->
 
-<div class=" ">
-  <div class="mb-6">
-    <p class="text-lg font-semibold">Verifica que todos tus datos personales sean correctos</p>
-    <p class="text-gray-600 text-sm">Carga tu constancia de situación fiscal para poder cargar tus datos de manera más óptima</p>
-  </div>
+<div class="border border-gray-200 rounded-lg p-8">
+  <h3 class="text-lg font-medium text-gray-800 mb-6">Información básica</h3>
 
-  <div class="mt-8 border border-gray-200 rounded-lg p-6">
-    <h3 class="text-lg font-medium text-gray-800 mb-6">Información básica</h3>
+  <form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label for="empresa" class="block text-sm font-medium mb-2">Empresa</label>
+        <input
+          type="text"
+          id="empresa"
+          formControlName="empresa"
+          placeholder="Boletos de Autobús"
+          class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500"
+        >
+      </div>
 
-    <form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="empresa" class="block text-sm font-medium mb-2">Empresa</label>
+      <div>
+        <label for="rfcCliente" class="block text-sm font-medium mb-2">RFC del cliente</label>
+        <input
+          type="text"
+          id="rfcCliente"
+          formControlName="rfcCliente"
+          placeholder="GOMR220829EV8"
+          class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500"
+        >
+      </div>
+
+      <div>
+        <label for="numeroGuia" class="block text-sm font-medium mb-2">Número de Guía</label>
+        <div class="relative">
           <input
             type="text"
-            id="empresa"
-            formControlName="empresa"
-            placeholder="Boletos de Autobús"
-            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500"
-          >
-        </div>
-
-        <div>
-          <label for="rfcCliente" class="block text-sm font-medium mb-2">RFC del cliente</label>
-          <input
-            type="text"
-            id="rfcCliente"
-            formControlName="rfcCliente"
-            placeholder="GOMR220829EV8"
-            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500"
-          >
-        </div>
-
-        <div>
-          <label for="numeroGuia" class="block text-sm font-medium mb-2">Número de Guía</label>
-          <div class="relative">
-            <input
-              type="text"
-              id="numeroGuia"
-              formControlName="numeroGuia"
-              placeholder="37536"
-              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500"
-            >
-
-          </div>
-        </div>
-
-        <div>
-          <label for="token" class="block text-sm font-medium mb-2">Token</label>
-          <input
-            type="text"
-            id="token"
-            formControlName="token"
-            placeholder="4289089289EV91"
+            id="numeroGuia"
+            formControlName="numeroGuia"
+            placeholder="37536"
             class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500"
           >
         </div>
       </div>
 
-      <div class="flex justify-end mt-8">
-        <button type="submit" class="bg-orange-500 text-white font-medium py-2 px-8 rounded hover:bg-orange-600 transition duration-300 ease-in-out">Buscar</button>
+      <div>
+        <label for="token" class="block text-sm font-medium mb-2">Token</label>
+        <input
+          type="text"
+          id="token"
+          formControlName="token"
+          placeholder="4289089289EV91"
+          class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500"
+        >
       </div>
-    </form>
-  </div>
+    </div>
+
+    <div class="flex justify-end mt-8">
+      <button type="submit" class="bg-orange-500 text-white font-medium py-2 px-8 rounded hover:bg-orange-600 transition duration-300 ease-in-out">Buscar</button>
+    </div>
+  </form>
 </div>
