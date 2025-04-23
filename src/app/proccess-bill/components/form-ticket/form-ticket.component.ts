@@ -18,39 +18,39 @@ export class FormTicketComponent implements OnInit {
   usosCfdi: string[] = this.ticketServices.getCfdi();
   formasPago = this.ticketServices.getFormasPago();
   regimenesFiscales = this.ticketServices.getRegimenesFiscales(); // Obtenemos los regímenes fiscales
-  
-  // Variables para fecha y hora
+
+  // Variables for date and time
   fechaActual: string = '';
   horaActual: string = '';
-  
+
   ngOnInit() {
-    // Inicializar fecha y hora actuales
+    // Initialize current date and time
     this.setCurrentDateTime();
   }
-  
-  // Método para establecer fecha y hora actuales
+
+  // Method to set current date and time
   setCurrentDateTime() {
     const now = new Date();
-    
-    // Formato para fecha: YYYY-MM-DD (para input type="date")
+
+    // Date format: YYYYY-MM-DD (for input type="date").
     this.fechaActual = now.toISOString().split('T')[0];
-    
-    // Formato para hora: HH:MM (para input type="time")
+
+    // Format for time: HH:MM (for input type="time")
     this.horaActual = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
   }
 
-  // Método para actualizar campos individuales del ticket
+  // Method to update individual ticket fields
   updateTicket<K extends keyof Ticket>(key: K, value: Ticket[K]) {
     // Creamos una copia con los valores actualizados
     const updatedTicket = {
       ...this.ticket,
       [key]: value
     };
-    
-    // Actualizamos el servicio
+
+    // We update the service
     this.ticketServices.updateTicket(updatedTicket);
-    
-    // Actualizamos la referencia local
+
+    // We update the local reference
     this.ticket = updatedTicket;
   }
 }

@@ -7,11 +7,11 @@ import { BasicUserInfo } from '../../interfaces/basicUserInfo';
   selector: 'app-basic-info',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './basic-info.component.html'
+  templateUrl: './basic-info.component.html',
 })
 export class BasicInfoComponent {
   @Output() formSubmit = new EventEmitter<BasicUserInfo>();
-  
+
   userData = signal<BasicUserInfo>({
     rfc: '',
     nombre: '',
@@ -21,13 +21,13 @@ export class BasicInfoComponent {
     ciudad: '',
     colonia: '',
     calle: '',
-    numeroExt: ''
+    numeroExt: '',
   });
 
   updateField<K extends keyof BasicUserInfo>(key: K, value: BasicUserInfo[K]) {
     this.userData.set({
       ...this.userData(),
-      [key]: value
+      [key]: value,
     });
   }
 
@@ -35,9 +35,9 @@ export class BasicInfoComponent {
     console.log('Datos del formulario:', this.userData());
     this.formSubmit.emit(this.userData());
   }
-  
-  // Método público para obtener los datos actuales del formulario
-  // Para ser utilizado por el componente padre que tiene el botón externo
+
+  // Public method to obtain the current data from the form
+  // To be used by the parent component that has the external button.
   getUserData(): BasicUserInfo {
     return this.userData();
   }

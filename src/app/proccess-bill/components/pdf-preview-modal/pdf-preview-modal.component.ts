@@ -13,35 +13,35 @@ export class PdfPreviewModalComponent implements OnInit, OnDestroy {
   @Input() fileName = '';
   @Input() pdfUrl: SafeUrl | null = null;
   @Output() closeModal = new EventEmitter<void>();
-  
+
   ngOnInit(): void {
-    // Escuchar la tecla Escape para cerrar el modal
+    // Listen to the Escape key to close the modal
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
-  
+
   ngOnDestroy(): void {
-    // Eliminar el event listener cuando se destruye el componente
+    // Remove the event listener when the component is destroyed
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
-    
-    // Asegurarse de que el scroll del body esté habilitado al destruir el componente
+
+    // Ensure that body scroll is enabled when destroying the component
     document.body.style.overflow = 'auto';
   }
-  
+
   ngOnChanges(): void {
-    // Controlar el scroll del body basado en si el modal está visible
+    // Control body scroll based on whether the modal is visible
     if (this.show) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
   }
-  
+
   handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Escape' && this.show) {
       this.close();
     }
   }
-  
+
   close(): void {
     this.closeModal.emit();
     document.body.style.overflow = 'auto';
