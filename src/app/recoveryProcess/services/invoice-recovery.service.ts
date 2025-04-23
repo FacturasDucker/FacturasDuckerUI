@@ -1,4 +1,4 @@
-// services/invoice-recovery.service.ts
+// Service responsible for managing invoice recovery workflow and loading states
 
 import { Injectable, signal } from '@angular/core';
 import { Observable, of } from 'rxjs';

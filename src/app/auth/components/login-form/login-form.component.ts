@@ -15,7 +15,7 @@ export class LoginFormComponent {
   password: string = '';
 
   onSubmit() {
-    // Aquí puedes implementar la lógica de login
+
     console.log('Intentando iniciar sesión con:', this.email);
   }
 }

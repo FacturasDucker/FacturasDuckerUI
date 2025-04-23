@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './banner.component.css',
 })
 export class BannerComponent {
-  // Puedes añadir propiedades si necesitas personalizar el banner
   title: string = 'PORTAL DE FACTURACIÓN';
   subtitle: string = 'BIENVENIDO AL';
   description: string = 'Genera tu CFDI de manera fácil, rápida y segura. Facturación disponible durante el mes de tu compra.';
