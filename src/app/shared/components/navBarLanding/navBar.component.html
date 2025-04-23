@@ -1,17 +1,16 @@
 <!-- Header -->
-
-<header class="fixed top-0 left-0 w-full  z-50 py-8">
-  <div class="container mx-auto  flex justify-between items-center">
+<header class="fixed top-0 left-0 w-full z-50 py-8">
+  <div class="container mx-auto flex justify-between items-center">
    <!-- Logo -->
    <div class="h-10">
-     <a href="#" class="flex items-center">
+     <a [routerLink]="['/']" class="flex items-center">
        <div class="flex-shrink-0 flex items-center">
         <img src="/img/image-removebg-preview (4) 1.png" alt="Logo Flecha Amarilla" class="h-12">
         <div class="ml-2">
             <div class="text-gray-800 font-bold text-sm">GRUPO</div>
             <div class="text-gray-800 font-bold text-lg">Flecha Amarilla</div>
         </div>
-    </div>
+      </div>
      </a>
    </div>
 
@@ -19,22 +18,22 @@
    <nav class="flex-1 mx-10">
      <ul class="flex justify-end">
        <li class="mx-4">
-         <a href="/" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+         <a [routerLink]="['/']" routerLinkActive="text-orange-500" [routerLinkActiveOptions]="{exact: true}" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
            INICIO
          </a>
        </li>
        <li class="mx-4">
-         <a href="/faq" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+         <a [routerLink]="['/faq']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
            FAQ
          </a>
        </li>
        <li class="mx-4">
-         <a href="/contacto" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+         <a [routerLink]="['/contacto']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
            CONTACTO
          </a>
        </li>
        <li class="mx-4">
-         <a href="/gfa" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+         <a [routerLink]="['/main']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
            GFA
          </a>
        </li>
@@ -43,12 +42,12 @@
 
    <!-- Auth Buttons -->
    <div class="flex gap-3">
-     <button class="px-5 py-2 bg-transparent border-2 border-black  rounded-md font-semibold  text-black text-sm transition-all hover:bg-white/10">
+     <button [routerLink]="['/login']" class="px-5 py-2 bg-transparent border-2 border-black rounded-md font-semibold text-black text-sm transition-all hover:bg-white/10">
        LOGIN
      </button>
-     <button class="px-5 py-2 bg-orange-500 font-semibold  rounded-md text-white text-sm transition-all hover:bg-orange-600">
+     <button [routerLink]="['/register']" class="px-5 py-2 bg-orange-500 font-semibold rounded-md text-white text-sm transition-all hover:bg-orange-600">
        REGISTRO
      </button>
    </div>
   </div>
- </header>
+</header>

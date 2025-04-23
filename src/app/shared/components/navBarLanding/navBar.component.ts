@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [],
+  standalone: true,
+  imports: [RouterModule, CommonModule],
   templateUrl: './navBar.component.html',
 })
 export class NavBarComponent {
@@ -13,15 +16,15 @@ export class NavBarComponent {
     },
     {
       name: 'AVISO DE PRIVACIDAD',
-      url: '/test'
+      url: '/faq'
     },
     {
       name: 'PREGUNTAS FRECUENTES',
-      url: '/test'
+      url: '/faq'
     },
     {
       name: 'CONECTA GFA',
-      url: '/test'
+      url: '/main'
     }
   ]
 }
