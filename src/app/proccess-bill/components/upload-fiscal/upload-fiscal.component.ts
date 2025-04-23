@@ -3,83 +3,73 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 import { PdfPreviewModalComponent } from '../pdf-preview-modal/pdf-preview-modal.component';
-
 @Component({
   selector: 'app-upload-fiscal',
   standalone: true,
   imports: [CommonModule, PdfPreviewModalComponent],
-  templateUrl: './upload-fiscal.component.html'
+  templateUrl: './upload-fiscal.component.html',
 })
 export class UploadFiscalComponent {
   @Output() fileUploaded = new EventEmitter<File>();
-  
   isDragging = false;
   selectedFile: File | null = null;
   fileName: string = '';
   pdfPreviewUrl: SafeUrl | null = null;
   showModal = false;
-  
   constructor(private sanitizer: DomSanitizer) {}
-  
-  // Método para manejar cuando se arrastra un archivo sobre el componente
+  // Handle file drag over event
   onDragOver(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDragging = true;
   }
-  
-  // Método para manejar cuando se deja de arrastrar sobre el componente
+  // Handle file drag leave event
   onDragLeave(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDragging = false;
   }
-  
-  // Método para manejar cuando se suelta un archivo en el componente
+  // Process file drop event
   onDrop(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDragging = false;
-    
     const files = event.dataTransfer?.files;
     if (files && files.length > 0) {
       this.handleFile(files[0]);
     }
   }
-  
-  // Método para manejar cuando se selecciona un archivo a través del input
+  // Handle file selection from input
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.handleFile(input.files[0]);
     }
   }
-  
-  // Método común para procesar el archivo seleccionado
+  // Process and validate the selected file
   handleFile(file: File): void {
-    // Verificar si es un PDF
+    // Verify if it's a PDF
     if (file.type !== 'application/pdf') {
       alert('Por favor, selecciona un archivo PDF');
       return;
     }
-    
     this.selectedFile = file;
     this.fileName = file.name;
     this.generatePdfPreview(file);
   }
-  
-  // Método para generar la URL de vista previa del PDF
+  // Generate PDF preview from file
   generatePdfPreview(file: File): void {
     const reader = new FileReader();
     reader.onload = (e) => {
       if (e.target && e.target.result) {
-        this.pdfPreviewUrl = this.sanitizer.bypassSecurityTrustResourceUrl(e.target.result as string);
+        this.pdfPreviewUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+          e.target.result as string
+        );
       }
     };
     reader.readAsDataURL(file);
   }
-  
-  // Método para abrir el modal de vista previa
+  // Open PDF preview modal
   openPreviewModal(event?: MouseEvent): void {
     if (event) {
       event.stopPropagation();
@@ -88,13 +78,11 @@ export class UploadFiscalComponent {
       this.showModal = true;
     }
   }
-  
-  // Método para cerrar el modal de vista previa
+  // Close PDF preview modal
   closePreviewModal(): void {
     this.showModal = false;
   }
-  
-  // Método para borrar el archivo seleccionado
+  // Clear selected file and reset state
   clearFile(event?: MouseEvent): void {
     if (event) {
       event.stopPropagation();
@@ -104,22 +92,20 @@ export class UploadFiscalComponent {
     this.pdfPreviewUrl = null;
     this.showModal = false;
   }
-  
-  // Método para cargar el archivo
+  // Upload selected file
   uploadFile(event?: MouseEvent): void {
     if (event) {
       event.stopPropagation();
     }
     if (this.selectedFile) {
       this.fileUploaded.emit(this.selectedFile);
-      // Aquí normalmente enviarías el archivo a un servidor
+      // Here you would normally send the file to a server
       console.log('Archivo listo para cargar:', this.selectedFile);
     } else {
       alert('Por favor, selecciona un archivo primero');
     }
   }
-  
-  // Método para detener la propagación en el área de drop cuando está seleccionado un archivo
+  // Prevent propagation and open preview when file area is clicked
   handleClick(event: MouseEvent): void {
     if (this.selectedFile) {
       event.stopPropagation();

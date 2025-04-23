@@ -14,18 +14,18 @@ import { entidadesMexico } from '../../data/entidadesMexico';
 export class ComplementIneComponent {
   ineServices = inject(complementIneService);
   ineComplement = this.ineServices.getComplementIne();
-  
-  // Arreglo de entidades para el selector
+
+  // Entity arrangement for the selector
   entidades = entidadesMexico;
 
-  // Opciones para el tipo de proceso
+  // Options for process type
   tiposProceso = [
     'Ordinario',
     'Precampaña',
     'Campaña'
   ];
 
-  // Opciones para el tipo de comité
+  // Options for committee type
   tiposComite = [
     'Ejecutivo nacional',
     'Ejecutivo estatal',
@@ -33,7 +33,7 @@ export class ComplementIneComponent {
     'Directivo municipal'
   ];
 
-  // Opciones para ámbito
+  // Options for scope
   ambitos = [
     'Federal',
     'Local'

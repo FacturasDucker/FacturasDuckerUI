@@ -1,10 +1,10 @@
 <!-- upload-fiscal.component.html -->
 <div class="w-full">
   <p class="text-sm text-gray-700 mb-4">Carga tu constancia de situación fiscal para poder cargar tus datos de manera más óptima</p>
-  
+
   <div class="text-base font-medium mb-3">Constancia de Situacion Fiscal</div>
-  
-  <!-- Área para arrastrar y soltar archivos -->
+
+  <!-- Area to drag and drop files --> !
   <div
     class="border border-[#DCDCDC] rounded-lg min-h-[265px] flex items-center justify-center cursor-pointer relative overflow-hidden transition-all duration-300 bg-white mb-3"
     [ngClass]="{'border-2 border-dashed bg-blue-50': isDragging}"
@@ -13,7 +13,7 @@
     (drop)="onDrop($event)"
     (click)="fileInput.click()"
   >
-    <!-- Ícono de subida cuando no hay archivo -->
+    <!-- Upload icon when there is no file -->
     <div class="flex flex-col items-center text-gray-500" *ngIf="!selectedFile">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mb-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -22,10 +22,10 @@
       </svg>
       <span class="text-sm text-gray-500">Cargar PDF</span>
     </div>
-    
-    <!-- Información del archivo cuando hay uno seleccionado -->
-    <div 
-      class="flex flex-col items-center w-full h-full justify-center" 
+
+    <!-- File information when one file is selected -->
+    <div
+      class="flex flex-col items-center w-full h-full justify-center"
       *ngIf="selectedFile"
       (click)="handleClick($event)"
     >
@@ -37,38 +37,38 @@
         <polyline points="10 9 9 9 8 9"></polyline>
       </svg>
       <span class="text-sm text-gray-800 max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap">{{ fileName }}</span>
-      <button 
+      <button
         class="mt-2 text-xs text-[#0099cc] hover:underline"
         (click)="openPreviewModal($event)">
         Ver archivo
       </button>
     </div>
-    
-    <!-- Input oculto para seleccionar archivos -->
-    <input 
+
+    <!-- Hidden input to select files -->
+    <input
       #fileInput
-      type="file" 
+      type="file"
       accept="application/pdf"
       class="absolute w-px h-px opacity-0 overflow-hidden z-[-1]"
       (change)="onFileSelected($event)"
     >
   </div>
-  
-  <!-- Botones de acción -->
+
+  <!-- Action buttons -->
   <div class="flex  gap-6 justify-between">
-    <button 
+    <button
       class="py-1 border border-red-500 text-red-500 rounded-md hover:bg-red-50 transition-colors w-1/2 text-sm"
       (click)="clearFile($event)">
       Borrar
     </button>
-    <button 
+    <button
       class="py-1 bg-black text-white rounded-md hover:bg-gray-800 transition-colors w-1/2 text-sm"
       (click)="uploadFile($event)">
       Cargar
     </button>
   </div>
-  
-  <!-- Componente de modal separado -->
+
+  <!-- Separate modal component -->
   <app-pdf-preview-modal
     [show]="showModal"
     [fileName]="fileName"
