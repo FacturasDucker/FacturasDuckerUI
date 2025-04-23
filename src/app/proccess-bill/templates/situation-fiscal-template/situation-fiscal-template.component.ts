@@ -4,15 +4,17 @@ import { SelectServiceComponent } from "../../components/select-service/select-s
 
 @Component({
   selector: 'situation-fiscal-template',
+  standalone: true, // Added standalone decorator
   imports: [UploadFiscalComponent, SelectServiceComponent],
   templateUrl: './situation-fiscal-template.component.html',
   styleUrl: './situation-fiscal-template.component.css'
 })
 export class SituationFiscalTemplateComponent {
-   
+  // Method to handle uploaded fiscal certificate file
   handleFileUploaded(file: File): void {
-    console.log('Archivo recibido:', file.name);
-    // Aquí puedes enviar el archivo a un servicio para procesarlo
-    // Por ejemplo: this.fiscalService.uploadFile(file).subscribe(...)
+    console.log('File received:', file.name);
+    // TODO: Process file upload
+    // Example: Send file to a service for processing
+    // this.fiscalService.uploadFile(file).subscribe(...)
   }
 }

@@ -1,34 +1,38 @@
 <!-- components/invoice-ready/invoice-ready.component.html -->
-
 <div>
+  <!-- Verification and Process Information -->
   <div class="mb-6">
-    <p class="text-lg font-medium">Verifica que todos tus datos personales sean correctos</p>
-    <p class="text-gray-600 text-sm">Este proceso puede tardar hasta cinco minutos, si lo desea puede buscar su factura en el: MÓDULO DE RECUPERACIÓN</p>
+    <p class="text-lg font-medium">Verify that all your personal information is correct</p>
+    <p class="text-gray-600 text-sm">This process may take up to five minutes. If desired, you can search for your invoice in the: RECOVERY MODULE</p>
   </div>
 
+  <!-- Invoice Ready Section -->
   <div class="border border-gray-200 rounded-lg p-6">
+    <!-- Invoice Ready Header -->
     <div class="mb-4">
-      <h2 class="text-2xl font-bold">Tu factura está lista</h2>
-      <p class="font-medium text-gray-700">¡Gracias por tu preferencia!</p>
+      <h2 class="text-2xl font-bold">Your invoice is ready</h2>
+      <p class="font-medium text-gray-700">Thank you for your preference!</p>
     </div>
 
+    <!-- Invoice Details -->
     <p class="mb-6 text-gray-700">
-      Su solicitud de Comprobante Fiscal Digital por Internet (CFDI) se ha recibido exitosamente, dentro de las siguientes 72 horas, recibirá los archivos correspondientes en su cuenta de correo electrónico {{ emailCliente }} que nos proporcionó.
+      Your Digital Tax Receipt (CFDI) request has been successfully received. Within the next 72 hours, you will receive the corresponding files in the email account {{ emailCliente }} that you provided.
     </p>
 
+    <!-- ZIP File Information -->
     <div class="flex items-start gap-4 mb-8">
       <div class="flex-shrink-0">
-        <img src="img/carpeta-zip 1.svg" alt="Archivo ZIP" class="w-10 h-10 object-contain">
+        <img src="img/carpeta-zip 1.svg" alt="ZIP File" class="w-10 h-10 object-contain">
       </div>
-      <p class="text-gray-700">Descarga el archivo zip donde encontrarás tu archivo .pdf y .xml, en caso de no poder descargarlo consulta en recuperación</p>
+      <p class="text-gray-700">Download the zip file where you will find your .pdf and .xml files. If you cannot download it, check the recovery section</p>
     </div>
 
+    <!-- Download Button -->
     <div class="flex gap-4">
       <button
         (click)="downloadInvoice()"
-        class="bg-orange-500 text-white font-medium py-2 px-6 rounded hover:bg-orange-600 transition duration-300 ease-in-out"
-      >
-        Descargar archivos
+        class="bg-orange-500 text-white font-medium py-2 px-6 rounded hover:bg-orange-600 transition duration-300 ease-in-out">
+        Download files
       </button>
     </div>
   </div>

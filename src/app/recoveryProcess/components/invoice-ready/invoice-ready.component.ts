@@ -1,5 +1,4 @@
 // components/invoice-ready/invoice-ready.component.ts
-
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InvoiceRecoveryService } from '../../services/invoice-recovery.service';
@@ -11,20 +10,21 @@ import { InvoiceRecoveryService } from '../../services/invoice-recovery.service'
   imports: [CommonModule]
 })
 export class InvoiceReadyComponent {
+  // Event emitter to trigger process restart
   @Output() restart = new EventEmitter<void>();
 
-  // Usando inject() en lugar de inyección por constructor
+  // Inject invoice recovery service using dependency injection
   private invoiceRecoveryService = inject(InvoiceRecoveryService);
 
-  // Email del cliente para mostrar en la confirmación
+  // Client email to display in confirmation
   emailCliente = 'ru.gomez@flecha-amarilla.com';
 
-  // Método para descargar la factura
+  // Method to download the invoice
   downloadInvoice(): void {
     this.invoiceRecoveryService.downloadInvoice();
   }
 
-  // Método para reiniciar el proceso
+  // Method to restart the process
   restartProcess(): void {
     this.restart.emit();
   }

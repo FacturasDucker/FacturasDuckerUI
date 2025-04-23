@@ -1,8 +1,8 @@
 /**
- * Nombre: UploadFiscalConstancyComponent
- * Ubicación: src/app/profile/components/upload-fiscal-constancy/upload-fiscal-constancy.component.ts
- * Descripción: Componente para la carga de constancias fiscales.
- * Permite arrastrar y soltar archivos PDF o seleccionarlos mediante un botón.
+ * Name: UploadFiscalConstancyComponent
+ * Location: src/app/profile/components/upload-fiscal-constancy/upload-fiscal-constancy.component.ts
+ * Description: Component for uploading fiscal constancy documents.
+ * Allows dragging and dropping PDF files or selecting them via button.
  */
 import { Component, Output, EventEmitter, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,42 +14,46 @@ import { CommonModule } from '@angular/common';
   templateUrl: './upload-fiscal-constancy.component.html'
 })
 export class UploadFiscalConstancyComponent {
+  // Event emitter for completed file upload
   @Output() uploadComplete = new EventEmitter<File>();
 
+  // Signal to track drag state
   isDragging = signal<boolean>(false);
+
+  // Signal to store selected file
   selectedFile = signal<File | null>(null);
 
+  // Getter for file name
   get fileName(): string {
     return this.selectedFile()?.name || '';
   }
 
-  // Método para manejar cuando se arrastra un archivo sobre el componente
+  // Handle dragover event
   onDragOver(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDragging.set(true);
   }
 
-  // Método para manejar cuando se deja de arrastrar sobre el componente
+  // Handle dragleave event
   onDragLeave(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDragging.set(false);
   }
 
-  // Método para manejar cuando se suelta un archivo en el componente
+  // Handle file drop event
   onDrop(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDragging.set(false);
-
     const files = event.dataTransfer?.files;
     if (files && files.length > 0) {
       this.handleFile(files[0]);
     }
   }
 
-  // Método para manejar cuando se selecciona un archivo a través del input
+  // Handle file selection through input
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -57,29 +61,28 @@ export class UploadFiscalConstancyComponent {
     }
   }
 
-  // Método común para procesar el archivo seleccionado
+  // Common method to process selected file
   handleFile(file: File): void {
-    // Verificar si es un PDF
+    // Verify if file is a PDF
     if (file.type !== 'application/pdf') {
-      alert('Por favor, selecciona un archivo PDF');
+      alert('Please select a PDF file');
       return;
     }
-
     this.selectedFile.set(file);
   }
 
-  // Método para borrar el archivo seleccionado
+  // Clear selected file
   clearFile(): void {
     this.selectedFile.set(null);
   }
 
-  // Método para cargar el archivo
+  // Upload file
   uploadFile(): void {
     const file = this.selectedFile();
     if (file) {
       this.uploadComplete.emit(file);
     } else {
-      alert('Por favor, selecciona un archivo primero');
+      alert('Please select a file first');
     }
   }
 }

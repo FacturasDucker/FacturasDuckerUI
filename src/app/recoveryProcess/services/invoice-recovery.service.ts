@@ -1,5 +1,4 @@
 // Service responsible for managing invoice recovery workflow and loading states
-
 import { Injectable, signal } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -9,28 +8,27 @@ import { PersonalData } from '../interfaces/recovery-process.interface';
   providedIn: 'root'
 })
 export class InvoiceRecoveryService {
-  // Señal para manejar el estado de carga
+  // Signal to manage loading state
   isLoading = signal(false);
 
   constructor() { }
 
   /**
-   * Simula el proceso de recuperación de una factura
-   * @param personalData Datos personales del usuario
-   * @returns Observable que emite un booleano cuando el proceso finaliza
+   * Simulates invoice recovery process
+   * @param personalData User's personal data
+   * @returns Observable emitting a boolean when process completes
    */
   recoverInvoice(personalData: PersonalData): Observable<boolean> {
     this.isLoading.set(true);
-
-    // Simulamos un retraso de 3 segundos para emular la llamada al servidor
+    // Simulate 3-second delay to emulate server call
     return of(true).pipe(delay(3000));
   }
 
   /**
-   * Descarga la factura recuperada
+   * Downloads the recovered invoice
    */
   downloadInvoice(): void {
-    console.log('Descargando factura...');
-    // Aquí iría la lógica real para descargar el archivo
+    console.log('Downloading invoice...');
+    // Actual file download logic would be implemented here
   }
 }

@@ -9,17 +9,18 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navBar.component.html',
 })
 export class NavBarComponent {
+  // Navigation bar links configuration
   navBarData = [
     {
-      name: 'INICIO',
+      name: 'HOME',
       url: '/'
     },
     {
-      name: 'AVISO DE PRIVACIDAD',
+      name: 'PRIVACY NOTICE',
       url: '/faq'
     },
     {
-      name: 'PREGUNTAS FRECUENTES',
+      name: 'FREQUENTLY ASKED QUESTIONS',
       url: '/faq'
     },
     {
