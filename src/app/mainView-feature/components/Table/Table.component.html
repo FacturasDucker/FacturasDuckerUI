@@ -16,222 +16,37 @@
   <div class="max-h-[400px] overflow-y-auto custom-scroll">
     <table class="min-w-full divide-y divide-gray-200">
       <tbody class="bg-white divide-y divide-gray-200">
-        <!-- Example row -->
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
+        @for (row of rows; track row.id) {
+          <tr
+            class="cursor-pointer hover:bg-gray-100 transition-colors"
+            (click)="navigateToRecovery(row)"
+          >
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ row.id }}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
+                  <span class="text-purple-800 font-bold">{{ row.clientInitials }}</span>
+                </div>
+                <div class="ml-3">
+                  <div class="text-sm font-medium">{{ row.clientName }}</div>
+                  <div class="text-xs text-gray-500">{{ row.clientType }}</div>
+                </div>
               </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
-        <!-- Repeat more rows if needed -->
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
-              </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
-              </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
-              </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
-              </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
-              </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
-              </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">001</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <span class="text-purple-800 font-bold">M</span>
-              </div>
-              <div class="ml-3">
-                <div class="text-sm font-medium">Madata - Cores</div>
-                <div class="text-xs text-gray-500">Agricultura</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">
-            <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
-              Timbrada
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">Madata S.A.S</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 T. de proyecto</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">2 Fechas</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm">DD/MM/AA</td>
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-            <button class="text-gray-400 hover:text-gray-600">...</button>
-          </td>
-        </tr>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">
+              <span class="px-2 py-1 text-xs rounded-full bg-orange-500 outline-1 outline-[#8B4406] text-white flex items-center w-fit">
+                {{ row.location }}
+              </span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ row.businessName }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ row.serviceType }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ row.billingDate }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ row.email }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+              <button class="text-gray-400 hover:text-gray-600">...</button>
+            </td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>
