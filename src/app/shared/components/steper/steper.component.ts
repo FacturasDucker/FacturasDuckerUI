@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 export interface StepItem {
   value: number;
@@ -12,14 +13,28 @@ export interface StepItem {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './steper.component.html',
-  styleUrls: ['./stepper.component.css']
+  styleUrls: ['./steper.component.ts'],
+  animations: [
+    trigger('stepTransition', [
+      // Cuando avanzamos (el número aumenta)
+      transition(':increment', [
+        style({ opacity: 0, transform: 'translateX(50px)' }),
+        animate('400ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
+      ]),
+      // Cuando retrocedemos (el número disminuye)
+      transition(':decrement', [
+        style({ opacity: 0, transform: 'translateX(-50px)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
+      ])
+    ])
+  ]
 })
-export class StepperComponent {
+export class StepperComponent implements OnChanges {
+  // Pasos fijos predeterminados
   @Input() steps: StepItem[] = [
     { value: 1, header: 'Datos básicos', content: 'Paso 1' },
     { value: 2, header: 'Confirmacion', content: 'Paso 2' },
     { value: 3, header: 'Detalles token', content: 'Paso 3' },
-    { value: 4, header: 'Confirmación', content: 'Paso 4' }
   ];
   
   @Input() currentStep = 1;
@@ -30,11 +45,62 @@ export class StepperComponent {
   @ContentChild('content1') content1?: TemplateRef<any>;
   @ContentChild('content2') content2?: TemplateRef<any>;
   @ContentChild('content3') content3?: TemplateRef<any>;
-  @ContentChild('content4') content4?: TemplateRef<any>;
   
+  // Propiedades para el seguimiento del progreso
+  completedSteps: boolean[] = [false, false, false];
+  previousStepValue = 1; // Para rastrear la dirección del cambio
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['currentStep']) {
+      this.updateCompletedSteps();
+    }
+  }
+  
+  // Actualiza el estado de los pasos completados
+  updateCompletedSteps(): void {
+    for (let i = 0; i < this.steps.length; i++) {
+      this.completedSteps[i] = this.currentStep > this.steps[i].value;
+    }
+  }
+  
+  // Métodos públicos para ser utilizados externamente
   activateStep(stepValue: number): void {
+    // Marcar todos los pasos anteriores como completados
+    const oldStep = this.currentStep;
+    this.previousStepValue = this.currentStep; // Guardar el valor anterior
     this.currentStep = stepValue;
+    
+    // Si avanzamos hacia adelante, marcar todos los pasos intermedios como completados
+    if (stepValue > oldStep) {
+      for (let i = oldStep; i < stepValue; i++) {
+        this.completedSteps[i-1] = true;
+      }
+    }
+    
+    this.updateCompletedSteps();
     this.stepChange.emit(stepValue);
+  }
+  
+  // Método para avanzar al siguiente paso
+  nextStep(): void {
+    if (this.currentStep < this.steps.length) {
+      this.activateStep(this.currentStep + 1);
+    } else {
+      this.completeProcess();
+    }
+  }
+  
+  // Método para regresar al paso anterior
+  previousStep(): void {
+    if (this.currentStep > 1) {
+      this.activateStep(this.currentStep - 1);
+    }
+  }
+  
+  // Método para completar el proceso
+  completeProcess(): void {
+    this.completedSteps[this.steps.length - 1] = true;
+    this.complete.emit();
   }
 
   isActive(step: number): boolean {
@@ -42,11 +108,7 @@ export class StepperComponent {
   }
 
   isCompleted(step: number): boolean {
-    return this.currentStep > step;
-  }
-  
-  onComplete(): void {
-    this.complete.emit();
+    return this.completedSteps[step - 1];
   }
   
   // Método para obtener la plantilla correspondiente al paso actual
@@ -55,7 +117,6 @@ export class StepperComponent {
       case 1: return this.content1 || null;
       case 2: return this.content2 || null;
       case 3: return this.content3 || null;
-      case 4: return this.content4 || null;
       default: return null;
     }
   }
