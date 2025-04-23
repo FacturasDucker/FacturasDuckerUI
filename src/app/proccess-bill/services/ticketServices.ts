@@ -11,7 +11,8 @@ export class TicketService {
         formaPago: "01",
         tokenTicket: "4285065926RSV91",
         regimenFiscal: "605", // Cambiado a string para ser coherente
-        usoCfdi: "s01"
+        usoCfdi: "s01",
+        evidenciaImagen: null
     });
 
     getTicket(): Ticket {
@@ -21,11 +22,11 @@ export class TicketService {
     getCfdi(): string[] {
         return usoCfdi;
     }
-    
+
     getFormasPago() {
         return formaPago;
     }
-    
+
     getRegimenesFiscales() {
         return regimenFiscal;
     }
@@ -41,5 +42,10 @@ export class TicketService {
             ...currentTicket,
             [field]: value
         }));
+    }
+
+    // Método específico para actualizar la imagen de evidencia
+    updateEvidenciaImagen(file: File | null) {
+        this.updateTicketField('evidenciaImagen', file);
     }
 }

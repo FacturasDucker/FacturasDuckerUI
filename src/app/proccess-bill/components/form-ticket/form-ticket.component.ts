@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TicketService } from '../../services/ticketServices';
 import { Ticket } from '../../interfaces/ticket';
+import { UploadImageComponent } from '../upload-image/upload-image.component';
 
 @Component({
   selector: 'bill-form-ticket',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, UploadImageComponent],
   templateUrl: './form-ticket.component.html',
   styleUrl: './form-ticket.component.css'
 })
@@ -22,6 +23,9 @@ export class FormTicketComponent implements OnInit {
   // Variables for date and time
   fechaActual: string = '';
   horaActual: string = '';
+
+  // Variable para almacenar la imagen subida
+  evidenciaImagen: File | null = null;
 
   ngOnInit() {
     // Initialize current date and time
@@ -52,5 +56,14 @@ export class FormTicketComponent implements OnInit {
 
     // We update the local reference
     this.ticket = updatedTicket;
+  }
+
+  // Método para manejar la carga de la imagen
+  handleImageUpload(file: File): void {
+    this.evidenciaImagen = file;
+    console.log('Imagen cargada:', file.name);
+
+    // Aquí podrías hacer más cosas con la imagen,
+    // como enviarla a un servicio o almacenarla en el estado
   }
 }
