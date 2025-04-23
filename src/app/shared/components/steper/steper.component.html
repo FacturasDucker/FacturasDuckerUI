@@ -3,11 +3,9 @@
   <div class="flex justify-between">
     @for (step of steps; track step.value; let i = $index; let last = $last) {
       <div class="flex flex-col items-center relative">
-        <!-- Horizontal Connector Line con mejor animación -->
+        <!-- Horizontal Connector Line -->
         @if (!last) {
-          <div class="absolute w-full h-[3px] bg-gray-300 top-4 left-1/2 z-0"
-               [class.direction-backward]="currentStep < previousStepValue"
-               style="width: calc(200% - 2rem);">
+          <div class="absolute w-full h-[3px] bg-gray-300 top-4 left-1/2 z-0" style="width: calc(200% - 2rem);">
             <div 
               class="h-full bg-[#FC7516] line-progress"
               [ngClass]="{
@@ -18,7 +16,7 @@
           </div>
         }
         
-        <!-- Step Circle: Naranja si está completado o activo con mejor animación -->
+        <!-- Step Circle -->
         <div 
           [class]="isActive(step.value) ? 'bg-[#FC7516] text-white scale-110' : 
                   isCompleted(step.value) ? 'bg-[#FC7516] text-white' : 
@@ -46,10 +44,10 @@
     }
   </div>
   
-  <!-- Step Content con animación de transición -->
-  <div class="mt-6 overflow-hidden">
+  <!-- Step Content sin animación -->
+  <div class="mt-6">
     <!-- Solo renderiza el contenido del paso activo -->
-    <div class="flex flex-col" [@stepTransition]="currentStep">
+    <div class="flex flex-col">
       <!-- Content Area -->
       <div class="min-h-48 flex font-medium flex-col w-full">
         @switch (currentStep) {
@@ -76,3 +74,6 @@
           }
         }
       </div>
+    </div>
+  </div>
+</div>

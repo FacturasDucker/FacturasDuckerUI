@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 export interface StepItem {
   value: number;
@@ -13,21 +12,7 @@ export interface StepItem {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './steper.component.html',
-  styleUrls: ['./steper.component.ts'],
-  animations: [
-    trigger('stepTransition', [
-      // Cuando avanzamos (el número aumenta)
-      transition(':increment', [
-        style({ opacity: 0, transform: 'translateX(50px)' }),
-        animate('400ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
-      ]),
-      // Cuando retrocedemos (el número disminuye)
-      transition(':decrement', [
-        style({ opacity: 0, transform: 'translateX(-50px)' }),
-        animate('200ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
-      ])
-    ])
-  ]
+  styleUrls: ['./steper.component.ts']
 })
 export class StepperComponent implements OnChanges {
   // Pasos fijos predeterminados
@@ -48,7 +33,6 @@ export class StepperComponent implements OnChanges {
   
   // Propiedades para el seguimiento del progreso
   completedSteps: boolean[] = [false, false, false];
-  previousStepValue = 1; // Para rastrear la dirección del cambio
   
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['currentStep']) {
@@ -63,14 +47,12 @@ export class StepperComponent implements OnChanges {
     }
   }
   
-  // Métodos públicos para ser utilizados externamente
   activateStep(stepValue: number): void {
-    // Marcar todos los pasos anteriores como completados
+
     const oldStep = this.currentStep;
-    this.previousStepValue = this.currentStep; // Guardar el valor anterior
     this.currentStep = stepValue;
     
-    // Si avanzamos hacia adelante, marcar todos los pasos intermedios como completados
+
     if (stepValue > oldStep) {
       for (let i = oldStep; i < stepValue; i++) {
         this.completedSteps[i-1] = true;
@@ -80,7 +62,7 @@ export class StepperComponent implements OnChanges {
     this.updateCompletedSteps();
     this.stepChange.emit(stepValue);
   }
-  
+
   // Método para avanzar al siguiente paso
   nextStep(): void {
     if (this.currentStep < this.steps.length) {
