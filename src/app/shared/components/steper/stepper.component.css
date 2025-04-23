@@ -1,52 +1,150 @@
 :host {
-    display: block;
+  display: block;
+  width: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.whitespace-nowrap {
+  white-space: normal;
+  text-align: center;
+  max-width: 110px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* Animación mejorada para las líneas conectoras */
+.line-progress {
+  transition: width 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 0%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea avanzando a la mitad */
+.progress-half {
+  width: 50% !important;
+  animation: expand-from-left 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Línea retrocediendo */
+.direction-backward .progress-half {
+  animation: expand-from-right 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Línea completándose */
+.progress-full {
+  width: 100% !important;
+  animation: expand-to-full 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Animación para línea que avanza desde la izquierda */
+@keyframes expand-from-left {
+  0% { width: 0%; left: 0; }
+  100% { width: 50%; left: 0; }
+}
+
+/* Animación para línea que retrocede desde la derecha */
+@keyframes expand-from-right {
+  0% { width: 0%; right: 0; left: auto; }
+  100% { width: 50%; right: 0; left: auto; }
+}
+
+/* Animación para completar la línea */
+@keyframes expand-to-full {
+  0% { width: 50%; }
+  100% { width: 100%; }
+}
+
+/* Efecto de ondas para los círculos activos */
+.step-circle.scale-110::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(252, 117, 22, 0.4);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: ripple 1.5s infinite;
+}
+
+.step-circle.scale-110::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(252, 117, 22, 0.2);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: ripple 1.5s infinite 0.5s;
+}
+
+@keyframes ripple {
+  0% {
     width: 100%;
+    height: 100%;
+    opacity: 1;
   }
-  
+  100% {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+}
 
-  .relative {
-    position: relative;
-  }
-  
+/* Animación de transición cuando un paso se completa */
+.step-circle {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+}
+
+/* Un pequeño brillo cuando se completa un paso */
+.step-circle.bg-\[\#FC7516\]:not(.scale-110) {
+  animation: complete-pulse 0.5s ease-in-out;
+}
+
+@keyframes complete-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(252, 117, 22, 0.7); }
+  50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(252, 117, 22, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(252, 117, 22, 0); }
+}
+
+.scale-110 {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(252, 117, 22, 0.3);
+}
+
+.min-h-48 {
+  min-height: 12rem;
+}
+
+@media (max-width: 640px) {
   .whitespace-nowrap {
-    white-space: normal;
-    text-align: center;
-    max-width: 110px;
-    font-size: 0.75rem;
-    line-height: 1.2;
+    max-width: 70px;
+    font-size: 0.65rem;
   }
   
+  .w-8, .h-8 {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+  }
+}
 
-  @media (max-width: 640px) {
-    .whitespace-nowrap {
-      max-width: 70px;
-      font-size: 0.65rem;
-    }
-    
-    .w-8, .h-8 {
-      width: 1.75rem !important;
-      height: 1.75rem !important;
-    }
-  }
-  
+button {
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
 
-  button {
-    font-weight: 500;
-    border-radius: 4px;
-    font-size: 0.875rem;
-  }
-  
-  button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(252, 117, 22, 0.3);
-  }
-  
-  
-  .transition-all {
-    transition: all 0.3s ease-in-out;
-  }
-  
-
-  .min-h-48 {
-    min-height: 12rem;
-  }
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(252, 117, 22, 0.3);
+}

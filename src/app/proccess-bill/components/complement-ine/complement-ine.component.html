@@ -1,0 +1,93 @@
+<section class="w-full flex flex-col mt-3">
+    <h3 class="font-bold mb-1">Complemento INE</h3>
+    <!-- Opción 2: Usar ngModelOptions standalone -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-3">
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Tipo de proceso
+        </label>
+        <select
+          id="tipoProceso"
+          [ngModel]="ineComplement.tipoProceso"
+          [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="updateComplementIne('tipoProceso', $event)"
+          class="w-full py-1 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow shadow-black/10 text-sm"
+        >
+          <option value="" disabled selected>Seleccione un tipo de proceso</option>
+          @for (tipo of tiposProceso; track tipo) {
+            <option [value]="tipo">{{ tipo }}</option>
+          }
+        </select>
+      </div>
+        
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Tipo comité
+        </label>
+        <select
+          id="tipoComite"
+          [ngModel]="ineComplement.tipoComite"
+          [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="updateComplementIne('tipoComite', $event)"
+          class="w-full py-1 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow shadow-black/10 text-sm"
+        >
+          <option value="" disabled selected>Seleccione un tipo de comité</option>
+          @for (tipo of tiposComite; track tipo) {
+            <option [value]="tipo">{{ tipo }}</option>
+          }
+        </select>
+      </div>
+                  
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Entidad
+        </label>
+        <select
+          id="entidad"
+          [ngModel]="ineComplement.entidad"
+          [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="updateComplementIne('entidad', $event)"
+          class="w-full py-1 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow shadow-black/10 text-sm"
+        >
+          <option value="" disabled selected>Seleccione una entidad</option>
+          @for (entidad of entidades; track entidad.clave) {
+            <option [value]="entidad.clave">{{ entidad.nombre }}</option>
+          }
+        </select>
+      </div>
+       
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Ámbito
+        </label>
+        <select
+          id="ambito"
+          [ngModel]="ineComplement.ambito"
+          [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="updateComplementIne('ambito', $event)"
+          class="w-full py-1 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow shadow-black/10 text-sm"
+        >
+          <option value="" disabled selected>Seleccione un ámbito</option>
+          @for (ambito of ambitos; track ambito) {
+            <option [value]="ambito">{{ ambito }}</option>
+          }
+        </select>
+      </div>
+       
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Claves contabilidad
+        </label>
+        <input
+          id="clavesContabilidad"
+          type="text"
+          placeholder="223222"
+          [ngModel]="ineComplement.clavesContabilidad"
+          [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="updateComplementIne('clavesContabilidad', $event)"
+          class="w-full py-1 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+    </div>
+  </section>

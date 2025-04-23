@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { NavBarHomeComponent } from "../../../shared/components/navBarHome/navBarHome.component";
 
 import { ProccessBillService } from '../../services/proccess-bill-services';
@@ -7,15 +7,18 @@ import { HeaderSectionComponent } from "../../components/header-section/header-s
 import { SituationFiscalTemplateComponent } from "../../templates/situation-fiscal-template/situation-fiscal-template.component";
 import { VerificacionTemplateComponent } from "../../templates/verificacion-template/verificacion-template.component";
 import { InformationTicketTemplateComponent } from "../../templates/information-ticket-template/information-ticket-template.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-proccess-bill-page',
   standalone: true,
-  imports: [NavBarHomeComponent, StepperComponent, HeaderSectionComponent, SituationFiscalTemplateComponent, VerificacionTemplateComponent, InformationTicketTemplateComponent],
+  imports: [CommonModule, NavBarHomeComponent, StepperComponent, HeaderSectionComponent, SituationFiscalTemplateComponent, VerificacionTemplateComponent, InformationTicketTemplateComponent],
   templateUrl: './proccess-bill-page.component.html',
   styleUrls: ['./proccess-bill-page.component.css']
 })
 export class ProccessBillPageComponent {
+  @ViewChild('stepper') stepper!: StepperComponent;
+  
   private proccessBillService = inject(ProccessBillService);
   
   mySteps = this.proccessBillService.mySteps;
