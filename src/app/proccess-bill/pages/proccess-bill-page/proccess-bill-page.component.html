@@ -1,50 +1,69 @@
+<!--
+  Billing process stepper component with three-step workflow
+  Includes navigation bar, stepper, and action buttons
+-->
 <div class="w-full flex flex-col">
-  <app-nav-bar-home/>
+  <!-- Navigation bar component -->
+  <app-nav-bar-home />
+
+  <!-- Main content area with padding and relative positioning -->
   <main class="w-full flex-col px-14 mb-5 relative pb-20">
-    <header-section-bill/>
+    <!-- Header section for billing -->
+    <header-section-bill />
+
+    <!-- Small vertical margin -->
     <div class="mt-2"></div>
-    
+
+    <!-- Stepper component for billing process -->
     <app-stepper
       #stepper
       [currentStep]="activeStep"
       (stepChange)="onStepChange($event)"
-      (complete)="onComplete()">
-      
+      (complete)="onComplete()"
+    >
+      <!-- First step: Fiscal situation template -->
       <ng-template #content1>
-        <situation-fiscal-template/>
+        <situation-fiscal-template />
       </ng-template>
-      
+
+      <!-- Second step: Bill verification template -->
       <ng-template #content2>
-        <bill-verificacion-template/>
+        <bill-verificacion-template />
       </ng-template>
-      
+
+      <!-- Third step: Ticket information template -->
       <ng-template #content3>
-        <app-information-ticket-template/>
+        <app-information-ticket-template />
       </ng-template>
     </app-stepper>
-    
-    <!-- Botones externos -->
+
+    <!-- Fixed action buttons at bottom right -->
     <div class="fixed bottom-8 right-20 flex gap-4 justify-end">
-      <!-- Botones de acción (a la derecha) -->
       <div class="flex gap-2">
+        <!-- Back button (shown after first step) -->
         <button
           *ngIf="activeStep > 1"
           class="flex items-center px-6 py-1 border border-red-500 text-red-500 rounded hover:bg-red-50 transition-colors"
-          (click)="stepper.previousStep()">
+          (click)="stepper.previousStep()"
+        >
           Regresar
         </button>
-        
+
+        <!-- Continue button for steps 1 and 2 -->
         <button
           *ngIf="activeStep < 3"
           class="flex items-center px-6 py-1 bg-[#FC7516] text-white rounded hover:bg-[#e56b13] transition-colors"
-          (click)="stepper.nextStep()">
+          (click)="stepper.nextStep()"
+        >
           Continuar
         </button>
-        
+
+        <!-- Finish/Submit button for final step -->
         <button
           *ngIf="activeStep === 3"
           class="flex items-center px-6 py-1 bg-[#FC7516] text-white rounded hover:bg-[#e56b13] transition-colors"
-          (click)="stepper.completeProcess()">
+          (click)="stepper.completeProcess()"
+        >
           Continuar
         </button>
       </div>

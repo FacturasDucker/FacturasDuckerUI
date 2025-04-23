@@ -1,15 +1,16 @@
 <!--
-  Nombre: upload-fiscal-constancy.component.html
-  Ubicación: src/app/profile/components/upload-fiscal-constancy/upload-fiscal-constancy.component.html
-  Descripción: Plantilla HTML para el componente de carga de constancias fiscales.
-  Incluye el área para arrastrar/soltar archivos y botones de acción.
+ Name: upload-fiscal-constancy.component.html
+ Location: src/app/profile/components/upload-fiscal-constancy/upload-fiscal-constancy.component.html
+ Description: HTML template for fiscal constancy upload component.
+ Includes drag/drop area and action buttons.
 -->
 <div class="w-full">
+  <!-- Upload method header -->
   <div class="text-center mb-4">
-    <p class="text-sm text-gray-600">Cargar por</p>
+    <p class="text-sm text-gray-600">Upload method</p>
   </div>
 
-  <!-- Área para arrastrar y soltar archivos -->
+  <!-- Drag and drop file area -->
   <div
     class="border-2 border-dashed border-blue-300 rounded-lg min-h-[180px] flex items-center justify-center cursor-pointer relative overflow-hidden transition-all duration-300 bg-white mb-4"
     [ngClass]="{'border-blue-500 bg-blue-50': isDragging()}"
@@ -18,7 +19,7 @@
     (drop)="onDrop($event)"
     (click)="fileInput.click()">
 
-    <!-- Ícono de subida cuando no hay archivo -->
+    <!-- Upload icon when no file is selected -->
     @if (!selectedFile()) {
       <div class="flex flex-col items-center text-gray-500">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mb-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -26,10 +27,10 @@
           <polyline points="17 8 12 3 7 8"></polyline>
           <line x1="12" y1="3" x2="12" y2="15"></line>
         </svg>
-        <span class="text-sm text-gray-500">Cargar PDF</span>
+        <span class="text-sm text-gray-500">Upload PDF</span>
       </div>
     } @else {
-      <!-- Información del archivo cuando hay uno seleccionado -->
+      <!-- File information when a file is selected -->
       <div class="flex flex-col items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mb-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -42,7 +43,7 @@
       </div>
     }
 
-    <!-- Input oculto para seleccionar archivos -->
+    <!-- Hidden file input for file selection -->
     <input
       #fileInput
       type="file"
@@ -51,23 +52,24 @@
       (change)="onFileSelected($event)">
   </div>
 
-  <!-- Botones de acción -->
+  <!-- Action buttons -->
   <div class="grid grid-cols-2 gap-2 mb-4">
     <button
       (click)="clearFile()"
       class="py-2 border border-red-500 text-red-500 rounded-md hover:bg-red-50 transition-colors text-sm">
-      Borrar
+      Clear
     </button>
     <button
       (click)="uploadFile()"
       class="py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors text-sm">
-      Cargar
+      Upload
     </button>
   </div>
 
+  <!-- Continue button -->
   <button
     (click)="uploadFile()"
     class="w-full py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors text-sm">
-    Continuar
+    Continue
   </button>
 </div>

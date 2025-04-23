@@ -2,28 +2,31 @@ import { Injectable, signal } from '@angular/core';
 import { ComplementoIne } from '../interfaces/ComplementoIne';
 
 @Injectable({providedIn: 'root'})
-export class complementIneService {
-   complementIne = signal<ComplementoIne>({
-    ambito:"",
-    clavesContabilidad:"",
-    entidad:"",
-    tipoComite:"",
-    tipoProceso:""
-   })
+export class ComplementIneService {
+  // Reactive signal to store INE complement information
+  complementIne = signal<ComplementoIne>({
+    ambito: "",           // Electoral scope
+    clavesContabilidad: "", // Accounting keys
+    entidad: "",          // Electoral entity
+    tipoComite: "",       // Committee type
+    tipoProceso: ""       // Process type
+  });
 
-   getComplementIne():ComplementoIne{
-     return this.complementIne()
-   }
+  // Retrieve current INE complement information
+  getComplementIne(): ComplementoIne {
+    return this.complementIne();
+  }
 
-   updatedComplementIne(newComplementIne:ComplementoIne){
-      this.complementIne.set(newComplementIne)
-   }
+  // Update entire INE complement object
+  updateComplementIne(newComplementIne: ComplementoIne) {
+    this.complementIne.set(newComplementIne);
+  }
 
-   updatedComplementIneField<K extends keyof ComplementoIne>(field: K, value: ComplementoIne[K]){
-      this.complementIne.update((currentIne)=>({
-        ...currentIne,
-        [field]:value
-      }))
-   }
-    
+  // Partially update a specific field of the INE complement
+  updateComplementIneField<K extends keyof ComplementoIne>(field: K, value: ComplementoIne[K]) {
+    this.complementIne.update((currentIne) => ({
+      ...currentIne,
+      [field]: value
+    }));
+  }
 }

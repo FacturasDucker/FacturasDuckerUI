@@ -1,8 +1,8 @@
 /**
- * Nombre: LinkeablesComponent (Actualizado)
- * Ubicación: src/app/shared/components/navBarHome/linkeables/linkeables.component.ts
- * Descripción: Componente que muestra los enlaces de navegación en la barra superior.
- * Se ha actualizado para incluir el enlace a la página de contacto.
+ * Name: LinkeablesComponent (Updated)
+ * Location: src/app/shared/components/navBarHome/linkeables/linkeables.component.ts
+ * Description: Component that displays navigation links in the top navigation bar.
+ * Updated to include contact page link.
  */
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -15,10 +15,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './linkeables.component.html',
 })
 export class LinkeablesComponent {
+  // Navigation links for the top navigation bar
   navLinks = [
-    { label: 'INICIO', route: 'main' },
+    { label: 'HOME', route: 'main' },
     { label: 'FAQ', route: 'faq' },
-    { label: 'CONTACTO', route: 'contacto' },
+    { label: 'CONTACT', route: 'contacto' },
     { label: 'GFA', route: 'gfa' }
   ];
 }

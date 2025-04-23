@@ -15,7 +15,7 @@
   line-height: 1.2;
 }
 
-/* Animación mejorada para las líneas conectoras */
+/* Enhanced connector line animation */
 .line-progress {
   transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.5s ease-in-out;
   width: 0%;
@@ -30,7 +30,7 @@
   width: 100% !important;
 }
 
-/* Animaciones para el contenido del paso */
+/* Step content animations */
 .step-content {
   transition: transform 0.4s ease-out, opacity 0.3s ease-out;
   will-change: transform, opacity;
@@ -44,6 +44,7 @@
   animation: slideFromLeft 0.4s ease-out;
 }
 
+/* Keyframe animations */
 @keyframes slideFromRight {
   0% {
     opacity: 0;
@@ -77,23 +78,25 @@
   }
 }
 
-/* Animación para la línea dependiendo de la dirección */
+/* Line animation based on direction */
 .direction-backward .line-progress {
   transition-timing-function: cubic-bezier(0.66, 0, 0.34, 1);
 }
 
+/* Responsive adjustments */
 @media (max-width: 640px) {
   .whitespace-nowrap {
     max-width: 70px;
     font-size: 0.65rem;
   }
-  
+
   .w-8, .h-8 {
     width: 1.75rem !important;
     height: 1.75rem !important;
   }
 }
 
+/* Button styles */
 button {
   font-weight: 500;
   border-radius: 4px;
@@ -105,7 +108,7 @@ button:focus {
   box-shadow: 0 0 0 2px rgba(252, 117, 22, 0.3);
 }
 
-/* Animación para los círculos del paso activo */
+/* Active step circle animation */
 .step-circle {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }

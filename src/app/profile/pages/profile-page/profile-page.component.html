@@ -1,23 +1,23 @@
 <!--
-  Nombre: profile-page.component.html
-  Ubicación: src/app/profile/pages/profile-page/profile-page.component.html
-  Descripción: Plantilla HTML para la página de perfil de usuario.
-  Contiene las secciones principales de perfil, modales y formularios.
+  Name: profile-page.component.html
+  Location: src/app/profile/pages/profile-page/profile-page.component.html
+  Description: HTML template for user profile page.
+  Contains main profile sections, modals, and forms.
 -->
 <div class="w-full flex flex-col">
   <app-nav-bar-home/>
 
   <main class="px-14 py-6">
-    <!-- Título y subtítulo -->
+    <!-- Page title and description -->
     <div class="mb-6">
-      <h1 class="text-3xl font-bold">Editar datos personales</h1>
-      <p class="text-gray-700 mt-2">Gestiona todas tus constancias de situación fiscal para poder facturar más rápido</p>
-      <p class="text-gray-600 text-sm">Carga tu constancia de situación fiscal para poder cargar tus datos de manera más óptima</p>
+      <h1 class="text-3xl font-bold">Edit Personal Information</h1>
+      <p class="text-gray-700 mt-2">Manage all your fiscal situation certificates to bill faster</p>
+      <p class="text-gray-600 text-sm">Upload your fiscal situation certificate to load your data more optimally</p>
     </div>
 
-    <!-- Sección de gestión de constancia -->
+    <!-- Fiscal certificate management section -->
     <div class="border border-gray-200 rounded-lg p-6 mb-6">
-      <h2 class="text-lg font-semibold mb-4">Gestión de Constancia de Situación Fiscal</h2>
+      <h2 class="text-lg font-semibold mb-4">Fiscal Situation Certificate Management</h2>
 
       <div class="flex flex-wrap items-center gap-4">
         <div class="w-full sm:w-auto flex-grow max-w-xs">
@@ -27,33 +27,33 @@
             (ngModelChange)="selectedConstancyType.set($event)"
             class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500">
             <option value="Personal">Personal</option>
-            <option value="Empresa">Empresa</option>
-            <option value="Otros">Otros</option>
+            <option value="Empresa">Company</option>
+            <option value="Otros">Others</option>
           </select>
         </div>
 
         <button
           (click)="openUploadModal()"
           class="px-4 py-2.5 bg-orange-500 text-white font-medium rounded-md hover:bg-orange-600 transition-colors mt-6 sm:mt-0">
-          Agregar Nueva
+          Add New
         </button>
 
         <button
           (click)="onContinue()"
           class="px-4 py-2.5 bg-gray-400 text-white font-medium rounded-md hover:bg-gray-500 transition-colors mt-6 sm:mt-0">
-          Editar Seleccionado
+          Edit Selected
         </button>
       </div>
     </div>
 
-    <!-- Sección de información básica -->
+    <!-- Basic information section -->
     <div class="border border-gray-200 rounded-lg p-6">
-      <h2 class="text-lg font-semibold mb-4">Información básica</h2>
+      <h2 class="text-lg font-semibold mb-4">Basic Information</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- RFC Cliente -->
+        <!-- RFC Client -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">RFC Cliente (mayus)</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">RFC Client (uppercase)</label>
           <input
             type="text"
             readonly
@@ -62,9 +62,9 @@
           >
         </div>
 
-        <!-- Nombre -->
+        <!-- Name -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
           <input
             type="text"
             readonly
@@ -73,9 +73,9 @@
           >
         </div>
 
-        <!-- Correo -->
+        <!-- Email -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Correo</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input
             type="email"
             readonly
@@ -84,9 +84,9 @@
           >
         </div>
 
-        <!-- CP -->
+        <!-- Postal Code -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">CP</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Postal Code</label>
           <input
             type="text"
             readonly
@@ -95,9 +95,9 @@
           >
         </div>
 
-        <!-- Estado -->
+        <!-- State -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">State</label>
           <input
             type="text"
             readonly
@@ -106,9 +106,9 @@
           >
         </div>
 
-        <!-- Ciudad -->
+        <!-- City -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Ciudad</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
           <input
             type="text"
             readonly
@@ -117,9 +117,9 @@
           >
         </div>
 
-        <!-- Colonia -->
+        <!-- Neighborhood -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Colonia</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Neighborhood</label>
           <input
             type="text"
             readonly
@@ -128,9 +128,9 @@
           >
         </div>
 
-        <!-- Calle -->
+        <!-- Street -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Calle</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Street</label>
           <input
             type="text"
             readonly
@@ -139,9 +139,9 @@
           >
         </div>
 
-        <!-- Número Ext -->
+        <!-- External Number -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Número Ext</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">External Number</label>
           <input
             type="text"
             readonly
@@ -155,17 +155,17 @@
         <button
           (click)="onContinue()"
           class="px-6 py-2.5 bg-orange-500 text-white font-medium rounded-md hover:bg-orange-600 transition-colors">
-          Continuar
+          Continue
         </button>
       </div>
     </div>
   </main>
 
-  <!-- Modal para carga de constancia fiscal -->
+  <!-- Fiscal certificate upload modal -->
   @if (showUploadModal()) {
     <div class="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white rounded-lg p-6 max-w-md w-full">
-        <h3 class="text-lg font-medium mb-4 text-center">Cargar Constancia de Situación Fiscal</h3>
+        <h3 class="text-lg font-medium mb-4 text-center">Upload Fiscal Situation Certificate</h3>
 
         <app-upload-fiscal-constancy
           (uploadComplete)="onUploadConstancy()">
@@ -175,30 +175,30 @@
           <button
             (click)="closeUploadModal()"
             class="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100 transition-colors">
-            Cancelar
+            Cancel
           </button>
         </div>
       </div>
     </div>
   }
 
-  <!-- Modal de éxito -->
+  <!-- Success modal -->
   @if (showSuccessModal()) {
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white rounded-lg p-6 max-w-md w-full border border-blue-300 border-dashed">
         <div class="text-center mb-4">
-          <p class="text-lg font-medium">Información cargada con éxito</p>
+          <p class="text-lg font-medium">Information Uploaded Successfully</p>
         </div>
 
         <div class="flex justify-center gap-4">
           <button
             class="px-4 py-2 border border-red-500 text-red-500 rounded-md hover:bg-red-50 transition-colors">
-            Cargar de nuevo
+            Upload Again
           </button>
           <button
             (click)="closeSuccessModal()"
             class="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
-            Cerrar
+            Close
           </button>
         </div>
       </div>

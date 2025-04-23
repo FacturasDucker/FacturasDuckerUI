@@ -3,12 +3,12 @@
   <div class="flex justify-between">
     @for (step of steps; track step.value; let i = $index; let last = $last) {
       <div class="flex flex-col items-center relative">
-        <!-- Horizontal Connector Line con mejor animación -->
+        <!-- Horizontal Connector Line with improved animation -->
         @if (!last) {
           <div class="absolute w-full h-[3px] bg-gray-300 top-4 left-1/2 z-0"
-               [class.direction-backward]="direction === 'backward'"
-               style="width: calc(200% - 2rem);">
-            <div 
+            [class.direction-backward]="direction === 'backward'"
+            style="width: calc(200% - 2rem);">
+            <div
               class="h-full bg-[#FC7516] line-progress"
               [ngClass]="{
                 'progress-full': isCompleted(step.value),
@@ -17,15 +17,16 @@
             </div>
           </div>
         }
-        
-        <!-- Step Circle: Naranja si está completado o activo con mejor animación -->
-        <div 
-          [class]="isActive(step.value) ? 'bg-[#FC7516] text-white scale-110' : 
-                  isCompleted(step.value) ? 'bg-[#FC7516] text-white' : 
-                  'bg-white text-gray-500 border-gray-300'"
+
+        <!-- Step Circle: Orange if completed or active with improved animation -->
+        <div
+          [class]="isActive(step.value) ? 'bg-[#FC7516] text-white scale-110' :
+                   isCompleted(step.value) ? 'bg-[#FC7516] text-white' :
+                   'bg-white text-gray-500 border-gray-300'"
           class="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform duration-300 border z-10 text-sm step-circle"
           (click)="activateStep(step.value)">
-          <!-- Check icon para pasos completados -->
+
+          <!-- Check icon for completed steps -->
           @if (isCompleted(step.value)) {
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -34,21 +35,21 @@
             {{ step.value }}
           }
         </div>
-        
+
         <!-- Step Header Text -->
-        <div 
+        <div
           class="mt-2 text-xs font-medium whitespace-nowrap max-w-32 text-center"
-          [class]="isActive(step.value) ? 'text-black font-semibold' : 
+          [class]="isActive(step.value) ? 'text-black font-semibold' :
                    isCompleted(step.value) ? 'text-[#FC7516] font-semibold' : 'text-gray-500'">
           {{ step.header }}
         </div>
       </div>
     }
   </div>
-  
-  <!-- Step Content con animación CSS en lugar de Angular Animations -->
+
+  <!-- Step Content with CSS animation instead of Angular Animations -->
   <div class="mt-6 overflow-hidden">
-    <!-- Solo renderiza el contenido del paso activo -->
+    <!-- Only render active step content -->
     <div class="flex flex-col step-content" [class.step-forward]="direction === 'forward'" [class.step-backward]="direction === 'backward'">
       <!-- Content Area -->
       <div class="min-h-48 flex font-medium flex-col w-full">
@@ -76,23 +77,19 @@
           }
         }
       </div>
-      
+
       <!-- Navigation Buttons -->
       <div class="flex pt-6 gap-4 mt-4 justify-between">
-        
         <!-- Back Button -->
         @if (currentStep > 1) {
           <button
             class="flex items-center px-6 py-1 border border-red-500 text-red-500 rounded hover:bg-red-50 transition-colors"
             (click)="previousStep()">
-            Regresar
+            Back
           </button>
         } @else {
-          <div></div> <!-- Espacio vacío para mantener el justify-between -->
+          <div></div> <!-- Empty space to maintain justify-between -->
         }
-        
-   
-        
       </div>
     </div>
   </div>

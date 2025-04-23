@@ -1,18 +1,24 @@
 <!-- pages/recoveryProcess-page/recoveryProcess-page.component.html -->
 <app-nav-bar-home/>
 <div class="px-14">
+  <!-- Page Header -->
   <div class="py-6">
+    <!-- Breadcrumb Navigation -->
     <div class="flex items-center text-sm text-gray-500">
-      <span>Inicio</span>
+      <span>Home</span>
       <span class="mx-1">/</span>
-      <span class="text-amber-500">Administración de clientes</span>
+      <span class="text-amber-500">Customer Management</span>
     </div>
-    <h1 class="text-4xl font-bold text-gray-900 mt-2">Recuperación de Factura</h1>
-    <p class="text-lg font-medium mt-4">Verifica que todos tus datos personales sean correctos</p>
-    <p class="text-gray-600 text-sm mt-1">Carga tu constancia de situación fiscal para poder cargar tus datos de manera más óptima</p>
+
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold text-gray-900 mt-2">Invoice Recovery</h1>
+
+    <!-- Subtitle and Description -->
+    <p class="text-lg font-medium mt-4">Verify that all your personal information is correct</p>
+    <p class="text-gray-600 text-sm mt-1">Upload your fiscal situation certificate to load your data more optimally</p>
   </div>
 
-  <!-- Componentes según el estado -->
+  <!-- Dynamic Component Rendering Based on Process State -->
   <div class="mt-8">
     @if (currentState() === RecoveryProcessState.PERSONAL_DATA) {
       <app-personal-data-form

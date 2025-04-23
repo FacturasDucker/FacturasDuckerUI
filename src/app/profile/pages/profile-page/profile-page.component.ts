@@ -1,8 +1,8 @@
 /**
- * Nombre: ProfilePageComponent
- * Ubicación: src/app/profile/pages/profile-page/profile-page.component.ts
- * Descripción: Componente principal para la página de perfil del usuario.
- * Contiene la lógica para mostrar información del usuario y gestionar constancias fiscales.
+ * Name: ProfilePageComponent
+ * Location: src/app/profile/pages/profile-page/profile-page.component.ts
+ * Description: Main component for user profile page.
+ * Manages user information display and fiscal certificate management.
  */
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,10 +18,16 @@ import { BasicUserInfo } from '../../../proccess-bill/interfaces/basicUserInfo';
   templateUrl: './profile-page.component.html'
 })
 export class ProfilePageComponent {
+  // Signal to control upload modal visibility
   showUploadModal = signal<boolean>(false);
+
+  // Signal to control success modal visibility
   showSuccessModal = signal<boolean>(false);
+
+  // Signal to track selected fiscal certificate type
   selectedConstancyType = signal<string>('Personal');
 
+  // Signal to store user data
   userData = signal<BasicUserInfo>({
     rfc: 'GOMR9208259V8',
     nombre: 'RAÚL ULISES GÓMEZ MÉNDEZ',
@@ -34,35 +40,35 @@ export class ProfilePageComponent {
     numeroExt: '301'
   });
 
-  // Método para abrir modal de carga
+  // Open upload modal
   openUploadModal(): void {
     this.showUploadModal.set(true);
   }
 
-  // Método para cerrar modal de carga
+  // Close upload modal
   closeUploadModal(): void {
     this.showUploadModal.set(false);
   }
 
-  // Método para mostrar modal de éxito
+  // Show success message modal
   showSuccessMessage(): void {
     this.showSuccessModal.set(true);
   }
 
-  // Método para cerrar modal de éxito
+  // Close success modal
   closeSuccessModal(): void {
     this.showSuccessModal.set(false);
   }
 
-  // Método que se llama al hacer clic en "Continuar" o "Editar Seleccionado"
+  // Handle continue or edit selected action
   onContinue(): void {
     this.showSuccessMessage();
   }
 
-  // Método para la carga de la constancia fiscal
+  // Handle fiscal certificate upload
   onUploadConstancy(): void {
-    // Aquí iría la lógica de carga
-    // Simulamos éxito después de un breve retraso
+    // Simulates upload process
+    // Shows success modal after a brief delay
     setTimeout(() => {
       this.closeUploadModal();
       this.showSuccessMessage();

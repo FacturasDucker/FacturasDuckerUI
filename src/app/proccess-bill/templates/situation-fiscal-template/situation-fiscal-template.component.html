@@ -1,15 +1,23 @@
+<!--
+  Fiscal Situation Certificate Section
+  Contains file upload and service selection components
+-->
 <section class="w-full flex-col">
-    <h3 class="text-xl font-semibold">Constancia de situación fiscal</h3>
-    
-    <main class="w-full mt-4 flex flex-col md:flex-row gap-6">
-      <!-- Primera sección: Componente de carga de constancia fiscal -->
-      <section class="w-full md:w-1/2">
-        <app-upload-fiscal (fileUploaded)="handleFileUploaded($event)"></app-upload-fiscal>
-      </section>
-  
-      <!-- Segunda sección: Selección de servicio -->
-      <section class="w-full md:w-1/2">
-        <select-service-bill/>
-      </section>
-    </main>
-  </section>
+  <!-- Section title -->
+  <h3 class="text-xl font-semibold">
+    Fiscal Situation Certificate
+  </h3>
+
+  <!-- Main content with responsive layout -->
+  <main class="w-full mt-4 flex flex-col md:flex-row gap-6">
+    <!-- First section: Fiscal certificate upload component -->
+    <section class="w-full md:w-1/2">
+      <app-upload-fiscal (fileUploaded)="handleFileUploaded($event)"></app-upload-fiscal>
+    </section>
+
+    <!-- Second section: Service selection -->
+    <section class="w-full md:w-1/2">
+      <select-service-bill/>
+    </section>
+  </main>
+</section>

@@ -1,4 +1,3 @@
-// src/app/shared/services/loader.service.ts
 import { Injectable, signal } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 
@@ -6,27 +5,27 @@ import { toObservable } from '@angular/core/rxjs-interop';
   providedIn: 'root'
 })
 export class LoaderService {
-  // Usando signals en lugar de BehaviorSubject
+  // Using signals instead of BehaviorSubject
   private isLoadingSignal = signal<boolean>(false);
-  private loadingMessageSignal = signal<string>('Cargando...');
+  private loadingMessageSignal = signal<string>('Loading...');
 
-  // Exponemos los signals para componentes que usen la API de signals
+  // Expose signals as readonly for components using signal API
   public isLoading = this.isLoadingSignal.asReadonly();
   public loadingMessage = this.loadingMessageSignal.asReadonly();
 
-  // Convertir signals a observables para compatibilidad con código existente
+  // Convert signals to observables for compatibility with existing code
   public isLoading$ = toObservable(this.isLoadingSignal);
   public loadingMessage$ = toObservable(this.loadingMessageSignal);
 
   constructor() { }
 
-  // Método para mostrar el loader
-  show(message: string = 'Cargando...'): void {
+  // Method to show loader
+  show(message: string = 'Loading...'): void {
     this.loadingMessageSignal.set(message);
     this.isLoadingSignal.set(true);
   }
 
-  // Método para ocultar el loader
+  // Method to hide loader
   hide(): void {
     this.isLoadingSignal.set(false);
   }
