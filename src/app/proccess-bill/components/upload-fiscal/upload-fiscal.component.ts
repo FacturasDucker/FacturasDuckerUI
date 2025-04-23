@@ -1,10 +1,13 @@
+// upload-fiscal.component.ts
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
+import { PdfPreviewModalComponent } from '../pdf-preview-modal/pdf-preview-modal.component';
 
 @Component({
   selector: 'app-upload-fiscal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PdfPreviewModalComponent],
   templateUrl: './upload-fiscal.component.html'
 })
 export class UploadFiscalComponent {
@@ -13,6 +16,10 @@ export class UploadFiscalComponent {
   isDragging = false;
   selectedFile: File | null = null;
   fileName: string = '';
+  pdfPreviewUrl: SafeUrl | null = null;
+  showModal = false;
+  
+  constructor(private sanitizer: DomSanitizer) {}
   
   // Método para manejar cuando se arrastra un archivo sobre el componente
   onDragOver(event: DragEvent): void {
@@ -58,22 +65,65 @@ export class UploadFiscalComponent {
     
     this.selectedFile = file;
     this.fileName = file.name;
+    this.generatePdfPreview(file);
+  }
+  
+  // Método para generar la URL de vista previa del PDF
+  generatePdfPreview(file: File): void {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target && e.target.result) {
+        this.pdfPreviewUrl = this.sanitizer.bypassSecurityTrustResourceUrl(e.target.result as string);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+  
+  // Método para abrir el modal de vista previa
+  openPreviewModal(event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    if (this.selectedFile && this.pdfPreviewUrl) {
+      this.showModal = true;
+    }
+  }
+  
+  // Método para cerrar el modal de vista previa
+  closePreviewModal(): void {
+    this.showModal = false;
   }
   
   // Método para borrar el archivo seleccionado
-  clearFile(): void {
+  clearFile(event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation();
+    }
     this.selectedFile = null;
     this.fileName = '';
+    this.pdfPreviewUrl = null;
+    this.showModal = false;
   }
   
   // Método para cargar el archivo
-  uploadFile(): void {
+  uploadFile(event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation();
+    }
     if (this.selectedFile) {
       this.fileUploaded.emit(this.selectedFile);
       // Aquí normalmente enviarías el archivo a un servidor
       console.log('Archivo listo para cargar:', this.selectedFile);
     } else {
       alert('Por favor, selecciona un archivo primero');
+    }
+  }
+  
+  // Método para detener la propagación en el área de drop cuando está seleccionado un archivo
+  handleClick(event: MouseEvent): void {
+    if (this.selectedFile) {
+      event.stopPropagation();
+      this.openPreviewModal();
     }
   }
 }

@@ -1,52 +1,120 @@
 :host {
-    display: block;
-    width: 100%;
-  }
-  
+  display: block;
+  width: 100%;
+}
 
-  .relative {
-    position: relative;
+.relative {
+  position: relative;
+}
+
+.whitespace-nowrap {
+  white-space: normal;
+  text-align: center;
+  max-width: 110px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Animación mejorada para las líneas conectoras */
+.line-progress {
+  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.5s ease-in-out;
+  width: 0%;
+}
+
+.progress-half {
+  width: 50% !important;
+  animation: pulse-line 1.5s infinite alternate;
+}
+
+.progress-full {
+  width: 100% !important;
+}
+
+/* Animaciones para el contenido del paso */
+.step-content {
+  transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+  will-change: transform, opacity;
+}
+
+.step-forward {
+  animation: slideFromRight 0.4s ease-out;
+}
+
+.step-backward {
+  animation: slideFromLeft 0.4s ease-out;
+}
+
+@keyframes slideFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
   }
-  
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-line {
+  0% {
+    opacity: 0.7;
+    width: 50%;
+  }
+  100% {
+    opacity: 1;
+    width: 60%;
+  }
+}
+
+/* Animación para la línea dependiendo de la dirección */
+.direction-backward .line-progress {
+  transition-timing-function: cubic-bezier(0.66, 0, 0.34, 1);
+}
+
+@media (max-width: 640px) {
   .whitespace-nowrap {
-    white-space: normal;
-    text-align: center;
-    max-width: 110px;
-    font-size: 0.75rem;
-    line-height: 1.2;
+    max-width: 70px;
+    font-size: 0.65rem;
   }
   
+  .w-8, .h-8 {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+  }
+}
 
-  @media (max-width: 640px) {
-    .whitespace-nowrap {
-      max-width: 70px;
-      font-size: 0.65rem;
-    }
-    
-    .w-8, .h-8 {
-      width: 1.75rem !important;
-      height: 1.75rem !important;
-    }
-  }
-  
+button {
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
 
-  button {
-    font-weight: 500;
-    border-radius: 4px;
-    font-size: 0.875rem;
-  }
-  
-  button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(252, 117, 22, 0.3);
-  }
-  
-  
-  .transition-all {
-    transition: all 0.3s ease-in-out;
-  }
-  
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(252, 117, 22, 0.3);
+}
 
-  .min-h-48 {
-    min-height: 12rem;
-  }
+/* Animación para los círculos del paso activo */
+.step-circle {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.scale-110 {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(252, 117, 22, 0.3);
+}
+
+.min-h-48 {
+  min-height: 12rem;
+}

@@ -1,3 +1,99 @@
-<section class="w-full flex flex-col">
-<h3 class="font-bold">Informacion del ticket</h3>
-</section>
+<section class="w-full flex flex-col ">
+    <h3 class="text-lg font-semibold mb-4">Información del ticket</h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-4">
+      <!-- Primera fila -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Token Ticket
+        </label>
+        <input 
+          id="tokenTicket"
+          name="tokenTicket"
+          type="text"
+          placeholder="4285065926RSV91"
+          [ngModel]="ticket.tokenTicket"
+          (ngModelChange)="updateTicket('tokenTicket', $event)"
+          class="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-gray-400 text-gray-700 shadow-sm text-sm"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Forma de pago
+        </label>
+        <select
+          id="formaPago"
+          name="formaPago"
+          [ngModel]="ticket.formaPago"
+          (ngModelChange)="updateTicket('formaPago', $event)"
+          class="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow-sm text-sm appearance-none"
+        >
+          <option *ngFor="let forma of formasPago" [value]="forma.id">
+            {{ forma.descripcion }}
+          </option>
+        </select>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Fecha
+        </label>
+        <input 
+          id="fecha"
+          name="fecha"
+          type="date"
+          [ngModel]="fechaActual"
+          class="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow-sm text-sm"
+          readonly
+        />
+      </div>
+      
+      <!-- Segunda fila -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Hora
+        </label>
+        <input 
+          id="hora"
+          name="hora"
+          type="time"
+          [ngModel]="horaActual"
+          class="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow-sm text-sm"
+          readonly
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Régimen Fiscal
+        </label>
+        <select
+          id="regimenFiscal"
+          name="regimenFiscal"
+          [ngModel]="ticket.regimenFiscal"
+          (ngModelChange)="updateTicket('regimenFiscal', $event)"
+          class="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow-sm text-sm appearance-none"
+        >
+          <option *ngFor="let regimen of regimenesFiscales" [value]="regimen.id">
+            {{ regimen.id }} - {{ regimen.descripcion }}
+          </option>
+        </select>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Uso CFDI
+        </label>
+        <select
+          id="usoCfdi"
+          name="usoCfdi"
+          [ngModel]="ticket.usoCfdi"
+          (ngModelChange)="updateTicket('usoCfdi', $event)"
+          class="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] text-gray-700 shadow-sm text-sm appearance-none"
+        >
+          <option *ngFor="let cfdi of usosCfdi" [value]="cfdi">{{ cfdi }}</option>
+        </select>
+      </div>
+    </div>
+  </section>

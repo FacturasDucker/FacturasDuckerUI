@@ -9,7 +9,7 @@ export class ProccessBillService {
     mySteps: StepItem[] = [
       { value: 1, header: 'Datos básicos', content: 'Información básica para tu factura' },
       { value: 2, header: 'Verificacion', content: 'Información de colaboradores' },
-      { value: 3, header: 'Herramientas y horas', content: 'Detalle de servicios' },
+      { value: 3, header: 'Detalles token', content: 'Detalle de servicios' },
       { value: 4, header: 'Confirmación', content: 'Confirma los datos de tu factura' }
     ];
     

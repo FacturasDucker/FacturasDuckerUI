@@ -1,137 +1,137 @@
 <div class="w-full">
-    <div class="p-6">
-      <h3 class="text-xl font-semibold mb-5">Información básica</h3>
-          
-      <!-- Formulario adaptado al diseño de la imagen -->
-      <form (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-3">
-        <!-- Primera fila: RFC, Nombre, Correo -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            RFC Cliente (mayus)
-          </label>
-          <input 
-            id="rfc"
-            type="text"
-            placeholder="RFC Cliente"
-            [ngModel]="userData().rfc"
-            (ngModelChange)="updateField('rfc', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
+  <div class="p-6">
+    <h3 class="text-xl font-semibold mb-5">Información básica</h3>
         
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Nombre
-          </label>
-          <input 
-            id="nombre"
-            type="text"
-            placeholder="Nombre"
-            [ngModel]="userData().nombre"
-            (ngModelChange)="updateField('nombre', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-        
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Correo
-          </label>
-          <input 
-            id="correo"
-            type="email"
-            placeholder="Correo"
-            [ngModel]="userData().correo"
-            (ngModelChange)="updateField('correo', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-        
-        <!-- Segunda fila: CP, Estado, Ciudad -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            CP
-          </label>
-          <input 
-            id="cp"
-            type="text"
-            placeholder="CP"
-            [ngModel]="userData().cp"
-            (ngModelChange)="updateField('cp', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-        
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Estado
-          </label>
-          <input 
-            id="estado"
-            type="text"
-            placeholder="Estado"
-            [ngModel]="userData().estado"
-            (ngModelChange)="updateField('estado', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-        
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Ciudad
-          </label>
-          <input 
-            id="ciudad"
-            type="text"
-            placeholder="Ciudad"
-            [ngModel]="userData().ciudad"
-            (ngModelChange)="updateField('ciudad', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-        
-        <!-- Tercera fila: Colonia, Calle, Número Ext -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Colonia
-          </label>
-          <input 
-            id="colonia"
-            type="text"
-            placeholder="Colonia"
-            [ngModel]="userData().colonia"
-            (ngModelChange)="updateField('colonia', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-        
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Calle
-          </label>
-          <input 
-            id="calle"
-            type="text"
-            placeholder="Calle"
-            [ngModel]="userData().calle"
-            (ngModelChange)="updateField('calle', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-        
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Número Ext
-          </label>
-          <input 
-            id="numeroExt"
-            type="text"
-            placeholder="Número Ext"
-            [ngModel]="userData().numeroExt"
-            (ngModelChange)="updateField('numeroExt', $event)"
-            class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
-          />
-        </div>
-      </form>
-    </div>
+    <!-- Formulario adaptado al diseño de la imagen -->
+    <form (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-3">
+      <!-- Primera fila: RFC, Nombre, Correo -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          RFC Cliente (mayus)
+        </label>
+        <input 
+          id="rfc"
+          type="text"
+          placeholder="RFC Cliente"
+          [ngModel]="userData().rfc"
+          (ngModelChange)="updateField('rfc', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Nombre
+        </label>
+        <input 
+          id="nombre"
+          type="text"
+          placeholder="Nombre"
+          [ngModel]="userData().nombre"
+          (ngModelChange)="updateField('nombre', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Correo
+        </label>
+        <input 
+          id="correo"
+          type="email"
+          placeholder="Correo"
+          [ngModel]="userData().correo"
+          (ngModelChange)="updateField('correo', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <!-- Segunda fila: CP, Estado, Ciudad -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          CP
+        </label>
+        <input 
+          id="cp"
+          type="text"
+          placeholder="CP"
+          [ngModel]="userData().cp"
+          (ngModelChange)="updateField('cp', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Estado
+        </label>
+        <input 
+          id="estado"
+          type="text"
+          placeholder="Estado"
+          [ngModel]="userData().estado"
+          (ngModelChange)="updateField('estado', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Ciudad
+        </label>
+        <input 
+          id="ciudad"
+          type="text"
+          placeholder="Ciudad"
+          [ngModel]="userData().ciudad"
+          (ngModelChange)="updateField('ciudad', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <!-- Tercera fila: Colonia, Calle, Número Ext -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Colonia
+        </label>
+        <input 
+          id="colonia"
+          type="text"
+          placeholder="Colonia"
+          [ngModel]="userData().colonia"
+          (ngModelChange)="updateField('colonia', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Calle
+        </label>
+        <input 
+          id="calle"
+          type="text"
+          placeholder="Calle"
+          [ngModel]="userData().calle"
+          (ngModelChange)="updateField('calle', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Número Ext
+        </label>
+        <input 
+          id="numeroExt"
+          type="text"
+          placeholder="Número Ext"
+          [ngModel]="userData().numeroExt"
+          (ngModelChange)="updateField('numeroExt', $event)"
+          class="w-full py-2 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#FC7516] placeholder:text-[#D5D5D5] text-gray-700 shadow shadow-black/10 text-sm"
+        />
+      </div>
+    </form>
   </div>
+</div>
