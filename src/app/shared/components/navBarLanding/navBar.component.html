@@ -1,21 +1,17 @@
 <!-- Header -->
 
-<header class="fixed top-0 left-0 w-full  z-50 py-4">
-  <div class="container mx-auto px-4 flex justify-between items-center">
+<header class="fixed top-0 left-0 w-full  z-50 py-8">
+  <div class="container mx-auto  flex justify-between items-center">
    <!-- Logo -->
    <div class="h-10">
      <a href="#" class="flex items-center">
-       <div class="h-10 w-20 flex items-center justify-center">
-         <!-- Opción 1: Ruta relativa ajustada -->
-         <img
-           src="/img/image-removebg-preview (4) 1.png"
-           alt="Logo Flecha Amarilla"
-           class="w-full h-full object-contain"
-         >
-       </div>
-       <span class=" text-white font-bold">Grupo</span>
-       <br>
-       <span class="ml-2 text-white font-bold">Flecha Amarilla</span>
+       <div class="flex-shrink-0 flex items-center">
+        <img src="/img/image-removebg-preview (4) 1.png" alt="Logo Flecha Amarilla" class="h-12">
+        <div class="ml-2">
+            <div class="text-gray-800 font-bold text-sm">GRUPO</div>
+            <div class="text-gray-800 font-bold text-lg">Flecha Amarilla</div>
+        </div>
+    </div>
      </a>
    </div>
 
@@ -23,22 +19,22 @@
    <nav class="flex-1 mx-10">
      <ul class="flex justify-end">
        <li class="mx-4">
-         <a href="#" class="text-white text-sm font-medium uppercase transition-colors hover:text-orange-500">
+         <a href="/" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
            INICIO
          </a>
        </li>
        <li class="mx-4">
-         <a href="#" class="text-white text-sm font-medium uppercase transition-colors hover:text-orange-500">
-           CHATBOT
+         <a href="/faq" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+           FAQ
          </a>
        </li>
        <li class="mx-4">
-         <a href="#" class="text-white text-sm font-medium uppercase transition-colors hover:text-orange-500">
+         <a href="/contacto" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
            CONTACTO
          </a>
        </li>
        <li class="mx-4">
-         <a href="#" class="text-white text-sm font-medium uppercase transition-colors hover:text-orange-500">
+         <a href="/gfa" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
            GFA
          </a>
        </li>
@@ -47,10 +43,10 @@
 
    <!-- Auth Buttons -->
    <div class="flex gap-3">
-     <button class="px-5 py-2 bg-transparent border border-white rounded text-white text-sm transition-all hover:bg-white/10">
+     <button class="px-5 py-2 bg-transparent border-2 border-black  rounded-md font-semibold  text-black text-sm transition-all hover:bg-white/10">
        LOGIN
      </button>
-     <button class="px-5 py-2 bg-orange-500 rounded text-white text-sm transition-all hover:bg-orange-600">
+     <button class="px-5 py-2 bg-orange-500 font-semibold  rounded-md text-white text-sm transition-all hover:bg-orange-600">
        REGISTRO
      </button>
    </div>

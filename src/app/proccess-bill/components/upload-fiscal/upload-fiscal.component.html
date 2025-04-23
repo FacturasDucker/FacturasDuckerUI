@@ -6,7 +6,7 @@
   
   <!-- Área para arrastrar y soltar archivos -->
   <div
-    class="border border-[#0099cc] rounded-lg min-h-[265px] flex items-center justify-center cursor-pointer relative overflow-hidden transition-all duration-300 bg-white mb-3"
+    class="border border-[#DCDCDC] rounded-lg min-h-[265px] flex items-center justify-center cursor-pointer relative overflow-hidden transition-all duration-300 bg-white mb-3"
     [ngClass]="{'border-2 border-dashed bg-blue-50': isDragging}"
     (dragover)="onDragOver($event)"
     (dragleave)="onDragLeave($event)"
@@ -55,14 +55,14 @@
   </div>
   
   <!-- Botones de acción -->
-  <div class="flex gap-6">
+  <div class="flex  gap-6 justify-between">
     <button 
-      class="py-1 border border-red-500 text-red-500 rounded-md hover:bg-red-50 transition-colors w-64 text-sm"
+      class="py-1 border border-red-500 text-red-500 rounded-md hover:bg-red-50 transition-colors w-1/2 text-sm"
       (click)="clearFile($event)">
       Borrar
     </button>
     <button 
-      class="py-1 bg-black text-white rounded-md hover:bg-gray-800 transition-colors w-64 text-sm"
+      class="py-1 bg-black text-white rounded-md hover:bg-gray-800 transition-colors w-1/2 text-sm"
       (click)="uploadFile($event)">
       Cargar
     </button>
