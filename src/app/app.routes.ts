@@ -1,4 +1,10 @@
-import { Routes, } from '@angular/router';
+/**
+ * Nombre: app.routes.ts (Actualizado)
+ * Ubicación: src/app/app.routes.ts
+ * Descripción: Archivo de configuración de rutas de la aplicación.
+ * Se han añadido las rutas hacia la página de perfil y contacto.
+ */
+import { Routes } from '@angular/router';
 import LoginPageComponent from './auth/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/pages/register-page/register-page.component';
 import { TestPageComponent } from './test/test-page/test-page.component';
@@ -7,6 +13,8 @@ import { MainViewPageComponent } from './mainView-feature/page/mainView-page/mai
 import { RecoveryProcessPageComponent } from './recoveryProcess/pages/recoveryProcess-page/recoveryProcess-page.component';
 import { FaqComponent } from './faq/fap';
 import { ProccessBillPageComponent } from './proccess-bill/pages/proccess-bill-page/proccess-bill-page.component';
+import { ProfilePageComponent } from './profile/pages/profile-page/profile-page.component';
+import { ContactPageComponent } from './contact/pages/contact-page/contact-page.component';
 
 export const routes: Routes = [
   {
@@ -34,12 +42,19 @@ export const routes: Routes = [
     component: RecoveryProcessPageComponent
   },
   {
-    path:'faq',
+    path: 'faq',
     component: FaqComponent
   },
   {
-    path:"billproccess",
-    component:ProccessBillPageComponent
+    path: "billproccess",
+    component: ProccessBillPageComponent
+  },
+  {
+    path: "profile",
+    component: ProfilePageComponent
+  },
+  {
+    path: "contacto",
+    component: ContactPageComponent
   }
-
 ];

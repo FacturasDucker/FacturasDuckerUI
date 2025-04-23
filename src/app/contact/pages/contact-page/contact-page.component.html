@@ -1,0 +1,68 @@
+<!--
+  Nombre: contact-page.component.html
+  Ubicación: src/app/contact/pages/contact-page/contact-page.component.html
+  Descripción: Plantilla HTML para la página de contacto.
+  Muestra información de contacto para diferentes departamentos de la empresa.
+-->
+<div class="w-full flex flex-col">
+  <app-nav-bar-home/>
+
+  <main class="px-14 py-6">
+    <!-- Título y subtítulo -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-[#222]">Contacto</h1>
+      <p class="text-gray-700 mt-2 text-lg">¿Necesitas ayuda? Contacta directamente a nuestro equipo especializado</p>
+    </div>
+
+    <!-- Lista de departamentos de contacto -->
+    <div class="space-y-4">
+      @for (item of contactItems; track $index) {
+        <div
+          class="border rounded-lg overflow-hidden transition-all duration-200"
+          [class.bg-orange-50]="item.highlighted"
+          [class.border-orange-300]="item.highlighted"
+          [class.border-gray-200]="!item.highlighted"
+          (mouseenter)="setHighlighted($index, true)"
+          (mouseleave)="setHighlighted($index, false)">
+
+          <div class="p-5 sm:p-5 flex flex-col sm:flex-row">
+            <!-- Icono de persona -->
+            <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center bg-gray-100 rounded-full">
+              <!-- SVG inline de trabajador con casco (en lugar de imagen) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-14 h-14 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12,4 C14.5,4 16.5,6 16.5,8.5 L16.5,10.5 L18,10.5 L18,12.5 C18,13.5 17.5,14 16.5,14 L14.5,14 C14.5,16 12.5,18.5 11.5,18.5" />
+                <path d="M12,4 C9.5,4 7.5,6 7.5,8.5 L7.5,10.5 L6,10.5 L6,12.5 C6,13.5 6.5,14 7.5,14 L9.5,14 C9.5,16 11.5,18.5 12.5,18.5" />
+                <circle cx="12" cy="9" r="3" />
+                <path d="M17,10 L21,8" />
+                <path d="M7,10 L3,8" />
+                <path d="M12,14 L12,21" />
+                <path d="M10,15 L14,15" />
+              </svg>
+            </div>
+
+            <!-- Información del departamento y contactos -->
+            <div class="ml-0 sm:ml-4 flex-grow mt-4 sm:mt-0">
+              <h2 class="text-xl font-semibold mb-2">{{ item.department }}</h2>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                <!-- Contacto primario -->
+                <div>
+                  <p class="font-medium text-[#333]">{{ item.primaryContact.name }}</p>
+                  <p class="text-gray-600 cursor-pointer hover:text-blue-600" (click)="sendEmail(item.primaryContact.email)">{{ item.primaryContact.email }}</p>
+                </div>
+
+                <!-- Contacto secundario (si existe) -->
+                @if (item.secondaryContact) {
+                  <div>
+                    <p class="font-medium text-[#333]">{{ item.secondaryContact.name }}</p>
+                    <p class="text-gray-600 cursor-pointer hover:text-blue-600" (click)="sendEmail(item.secondaryContact.email)">{{ item.secondaryContact.email }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+</div>

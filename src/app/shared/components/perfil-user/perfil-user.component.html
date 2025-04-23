@@ -1,8 +1,14 @@
+<!--
+  Nombre: perfil-user.component.html (Actualizado)
+  Ubicación: src/app/shared/components/perfil-user/perfil-user.component.html
+  Descripción: Plantilla HTML para el componente de perfil de usuario en la barra de navegación.
+  Incluye un enlace al perfil completo del usuario mediante el avatar circular.
+-->
 <div class="flex items-center">
-    <div class="flex items-center">
-        <span class="mr-3 text-sm text-gray-700">Juan Hernandez</span>
-        <div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-600 text-xs">JH</span>
-        </div>
-    </div>
+  <div class="flex items-center">
+    <span class="mr-3 text-sm text-gray-700">{{ userName }}</span>
+    <a [routerLink]="['/profile']" class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition-colors">
+      <span class="text-gray-600 text-xs">{{ userInitials }}</span>
+    </a>
+  </div>
 </div>
