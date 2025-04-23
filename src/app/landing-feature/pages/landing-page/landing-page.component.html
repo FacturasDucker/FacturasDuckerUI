@@ -8,10 +8,10 @@
   <main class="flex-1 relative z-10">
     <!-- Hero Banner -->
     <div class="w-full h-screen flex items-center ">
-      <div class="container mx-auto  text-white grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-between py-12">
+      <div class="container mx-auto text-white grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-between py-12">
         <!-- Sección izquierda (Texto + Botones) -->
         <div class="h-full flex flex-col justify-end">
-          
+
           <h2 class="text-4xl text-gray-700 font-bold mb-2 opacity-90">BIENVENIDO AL</h2>
           <h1 class="text-7xl text-black font-bold mb-5 leading-tight">
             PORTAL DE <br>
@@ -24,12 +24,14 @@
           </ul>
           <div class="flex gap-18">
             <button
+              [routerLink]="['/billproccess']"
               class="min-w-[200px] px-5 py-5 text-base font-semibold uppercase rounded-md transition-all duration-300 ease-in-out bg-orange-500 text-white hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-lg"
             >
               FACTURAR
             </button>
             <button
-              class="min-w-[200px] text-base font-semibold uppercase  transition-all border-2 border-gray-700 rounded-md duration-300 ease-in-out text-gray-700 bg-white/20 hover:bg-white/30 hover:-translate-y-0.5"
+              [routerLink]="['/contacto']"
+              class="min-w-[200px] text-base font-semibold uppercase transition-all border-2 border-gray-700 rounded-md duration-300 ease-in-out text-gray-700 bg-white/20 hover:bg-white/30 hover:-translate-y-0.5"
             >
               CONTACTO
             </button>
@@ -42,7 +44,7 @@
             class="rounded-lg shadow-lg w-full h-[550px] bg-cover bg-center"
             style="background-image: url('/img/register_ban.webp');"
           ></div>
-          <div class="absolute bottom-4 left-8 text-white text-4xl font-bold  leading-tight">
+          <div class="absolute bottom-4 left-8 text-white text-4xl font-bold leading-tight">
             GENERA TU FACTURA <br />FÁCIL, RÁPIDO Y SEGURO
           </div>
         </div>

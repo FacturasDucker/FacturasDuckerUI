@@ -1,54 +1,54 @@
-<div class="w-full h-full flex items-center justify-center">
-    <div class="w-full max-w-md px-8 overflow-y-auto max-h-full py-6">
-  
+<div class="w-full h-full flex items-center justify-center ">
+    <div class="w-full max-w-md px-8 overflow-y-auto max-h-full py-6h-[calc(100vh-160px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+
       <div class="mb-8 flex justify-center">
         <img src="img/logo.webp" alt="Logo Flecha Amarilla" class="h-10">
       </div>
-  
+
       <h2 class="text-3xl font-bold text-center mb-4">Bienvenido</h2>
       <p class="text-center text-gray-600 mb-6">Regístrate para comenzar a facturar</p>
-      
- 
+
+
       <form class="space-y-4" (ngSubmit)="onSubmit()">
         <div>
-          <input 
-            type="email" 
-            placeholder="Correo" 
+          <input
+            type="email"
+            placeholder="Correo"
             class="w-full px-4 rounded-md bg-[#EFEFEF] text-[#918C8C] py-2"
             [(ngModel)]="email"
             name="email"
             required>
         </div>
         <div>
-          <input 
-            type="password" 
-            placeholder="Contraseña" 
+          <input
+            type="password"
+            placeholder="Contraseña"
             class="w-full px-4 rounded-md bg-[#EFEFEF] text-[#918C8C] py-2"
             [(ngModel)]="password"
             name="password"
             required>
         </div>
         <div>
-          <input 
-            type="password" 
-            placeholder="Confirmar Contraseña" 
+          <input
+            type="password"
+            placeholder="Confirmar Contraseña"
             class="w-full px-4 rounded-md bg-[#EFEFEF] text-[#918C8C] py-2"
             [(ngModel)]="confirmPassword"
             name="confirmPassword"
             required>
         </div>
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           class="w-full bg-[#FC7516] text-white font-bold py-2 rounded-md hover:bg-yellow-600 transition-colors">
           Registrarse
         </button>
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           class="w-full bg-[#E8E8E8] text-black font-bold py-2 rounded-md hover:bg-gray-100 transition-colors outline-2 outline-gray-300">
           Continuar como invitado
         </button>
       </form>
-      
+
       <!-- Registro con redes sociales -->
       <div class="mt-8 text-center">
         <p class="text-[#A7A7A7]">O inicia sesión con</p>
@@ -63,14 +63,14 @@
           </button>
         </div>
       </div>
-      
+
       <!-- Link para iniciar sesión -->
       <div class="mt-6 text-center">
         <p class="text-gray-500">
-          ¿Ya tienes una cuenta? 
+          ¿Ya tienes una cuenta?
           <a [routerLink]="'/'" class="text-[#FC7516] font-medium hover:underline">Inicia Sesión</a>
         </p>
       </div>
-      
+
     </div>
   </div>
