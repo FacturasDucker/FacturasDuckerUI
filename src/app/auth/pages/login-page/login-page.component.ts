@@ -1,4 +1,4 @@
-// src/app/auth/pages/login-page/login-page.component.ts
+// Handles user authentication process with loader simulation
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoaderService } from '../../../shared/services/loader.service';
@@ -17,17 +17,16 @@ export default class LoginPageComponent {
   onLogin(event: Event) {
     event.preventDefault();
 
-    // Mostrar el loader con un mensaje personalizado
+    // Display the loader with a custom message
     this.loaderService.show('Iniciando sesión...');
 
-    // Simular una petición con un tiempo de espera más largo
-    // para poder ver claramente el loader en acción
+    // Simulate a request with a longer timeout
+    // to be able to clearly see the loader in action
     setTimeout(() => {
-      // Ocultar el loader después de 3 segundos
+      // Hide loader after 3 seconds
       this.loaderService.hide();
 
-      // Opcional: Puedes agregar aquí alguna redirección o mensaje
       console.log('Inicio de sesión simulado completado');
-    }, 3000); // 3 segundos de espera para ver claramente el loader
+    }, 3000); // 3 seconds of waiting to clearly see the loader
   }
 }

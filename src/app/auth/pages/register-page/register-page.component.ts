@@ -9,5 +9,5 @@ import { RegisterFormComponent } from '../../components/register-form/register-f
   templateUrl: './register-page.component.html',
 })
 export class RegisterPageComponent {
-  // Aquí puedes añadir lógica específica de la página de registro si es necesario
+
 }
