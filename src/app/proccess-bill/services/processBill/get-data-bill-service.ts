@@ -10,7 +10,7 @@ export class GetDataBillService extends BaseHttpClient{
     const formData = new FormData();
     formData.append('file', file, file.name);
     return this.httpClient.post<any>(
-        `${this.baseUrl}/extract-csf`,
+        `${this.baseScrappingService}/extract-csf`,
         formData
     );
 

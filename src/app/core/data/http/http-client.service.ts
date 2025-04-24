@@ -3,6 +3,9 @@ import { inject, Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class BaseHttpClient {
-  readonly baseUrl: String = 'https://b3a9-148-230-178-165.ngrok-free.app';
+  private readonly baseUrl: String = 'http://localhost:';
+  readonly baseScrappingService = `${this.baseUrl}8089`;
+  readonly baseUrlMdmBillService = `${this.baseUrl}8088`;
+  readonly baseUrlInvoiceService = `${this.baseUrl}8082`;
   readonly httpClient: HttpClient = inject(HttpClient);
 }

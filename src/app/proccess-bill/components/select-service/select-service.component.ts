@@ -1,6 +1,7 @@
-import { Component, signal, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, signal, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ServiceTypeAdapter } from '../../adapters/service-type-adapter';
 
 @Component({
   selector: 'select-service-bill',
@@ -10,17 +11,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class SelectServiceComponent implements OnInit {
   // List of available options
-  typeFacturations = signal<string[]>([
-    "Facturacion de los boletos",
-    "Facturacion de envios de primera plus",
-    "Facturacion de consumo de boletos"
-  ]);
+  @Input() typeFacturations : ServiceTypeAdapter[] = []
+  @Input() selectedTypeFacturation : ServiceTypeAdapter = new ServiceTypeAdapter()
 
   // Lista de constancias CF
   constanciasCf = signal<{id: string, nombre: string}[]>([]);
 
   // Valores seleccionados actualmente
-  selectedService = signal<string>(this.typeFacturations()[0]);
+  selectedService : number = 1;
   selectedConstanciaCf = signal<string>('');
 
   // Eventos para notificar al componente padre cuando cambia la selección
@@ -35,7 +33,7 @@ export class SelectServiceComponent implements OnInit {
   // Método para manejar el cambio de selección del servicio
   onServiceChange(event: Event): void {
     const select = event.target as HTMLSelectElement;
-    this.selectedService.set(select.value);
+    this.selectedService = parseInt(select.value);
     this.serviceChange.emit(select.value);
   }
 
