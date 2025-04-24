@@ -15,8 +15,8 @@ export class NavBarComponent {
   // Navigation bar links configuration
   navBarData = [
     {
-      name: 'INICIO',
-      url: '/'
+      name: 'FACTURACIÓN',
+      url: '/billproccess'
     },
     {
       name: 'FAQ',
