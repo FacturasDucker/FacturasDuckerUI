@@ -8,6 +8,8 @@ import { VerificacionTemplateComponent } from "../../templates/verificacion-temp
 import { InformationTicketTemplateComponent } from "../../templates/information-ticket-template/information-ticket-template.component";
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { AlertContainerComponent } from '../../../shared/components/alert-container/alert-container.component';
+import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-proccess-bill-page',
@@ -21,7 +23,8 @@ import { ModalComponent } from '../../../shared/components/modal/modal.component
     SituationFiscalTemplateComponent,
     VerificacionTemplateComponent,
     InformationTicketTemplateComponent,
-    ModalComponent
+    ModalComponent,
+    AlertContainerComponent
   ],
   templateUrl: './proccess-bill-page.component.html',
   styleUrls: ['./proccess-bill-page.component.css']
@@ -32,6 +35,9 @@ export class ProccessBillPageComponent implements OnInit {
 
   // Inject billing process service
   private proccessBillService = inject(ProccessBillService);
+
+  // Inject alert service
+  private alertService = inject(AlertService);
 
   // Modal control
   showWelcomeModal = signal<boolean>(false);
@@ -70,9 +76,27 @@ export class ProccessBillPageComponent implements OnInit {
     setTimeout(() => {
       this.showWelcomeModalForStep1();
     }, 300);
+
+    // Mostrar las alertas de ejemplo en el primer paso
+    if (this.activeStep() === 1) {
+      this.showInitialAlerts();
+    }
   }
 
-  // Método para configurar y mostrar el modal de bienvenida (paso 1)
+  // Method to show initial alerts
+  showInitialAlerts() {
+    setTimeout(() => {
+      this.alertService.success('archivo.pdf fue subido correctamente.', 'Subida exitosa');
+    }, 500);
+
+    setTimeout(() => {
+      this.alertService.error('El proyecto no pudo ser guardado.', 'Error al guardar', {
+        actionLabel: 'Ver reporte de error'
+      });
+    }, 1000);
+  }
+
+  // Show welcome modal for step 1
   showWelcomeModalForStep1() {
     this.modalType.set('welcome');
     this.modalTitle.set('Bienvenido al Proceso de Facturación');
@@ -89,7 +113,7 @@ export class ProccessBillPageComponent implements OnInit {
     this.showWelcomeModal.set(true);
   }
 
-  // Método para configurar y mostrar el modal del paso final (paso 3)
+  // Show final modal for step 3
   showFinalModalForStep3() {
     this.modalType.set('final');
     this.modalTitle.set('Confirmación de Datos');
@@ -110,6 +134,11 @@ export class ProccessBillPageComponent implements OnInit {
   onStepChange(step: number): void {
     this.activeStep.set(step);
     this.proccessBillService.onStepChange(step);
+
+    // Mostrar las alertas si estamos en el paso 1
+    if (step === 1) {
+      this.showInitialAlerts();
+    }
   }
 
   // Method to handle file uploads, bound to the service method

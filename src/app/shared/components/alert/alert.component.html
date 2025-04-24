@@ -1,0 +1,49 @@
+@if (show) {
+  <div
+    class="fixed z-50 max-w-md w-full shadow-lg rounded-lg border overflow-hidden transition-all duration-300"
+    [ngClass]="[alertBgColor, alertBorderColor]"
+    style="animation: slideInDown 0.3s ease-out forwards; right: 1rem; top: 1rem;">
+
+    <div class="p-4 flex items-start">
+      <!-- Icon -->
+      <div [ngClass]="alertIconColor" class="flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="alertIconPath" />
+        </svg>
+      </div>
+
+      <!-- Content -->
+      <div class="ml-3 flex-1">
+        @if (title) {
+          <h3 class="text-sm font-medium text-gray-800">{{ title }}</h3>
+        }
+        <div class="text-sm text-gray-600">{{ message }}</div>
+
+        <!-- Action button if provided -->
+        @if (actionLabel) {
+          <button
+            class="mt-2 px-4 py-1 text-sm text-white rounded-md"
+            [ngClass]="{
+              'bg-blue-500 hover:bg-blue-600': type === 'info',
+              'bg-green-500 hover:bg-green-600': type === 'success',
+              'bg-yellow-500 hover:bg-yellow-600': type === 'warning',
+              'bg-red-500 hover:bg-red-600': type === 'error'
+            }"
+            (click)="onAction()">
+            {{ actionLabel }}
+          </button>
+        }
+      </div>
+
+      <!-- Close button -->
+      <button
+        type="button"
+        class="flex-shrink-0 ml-2 text-gray-400 hover:text-gray-500 focus:outline-none"
+        (click)="onClose()">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+}
