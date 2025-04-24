@@ -100,7 +100,7 @@ export class UploadFiscalComponent {
     if (this.selectedFile) {
       this.fileUploaded.emit(this.selectedFile);
       // Here you would normally send the file to a server
-      console.log('Archivo listo para cargar:', this.selectedFile);
+      // console.log('Archivo listo para cargar:', this.selectedFile);
     } else {
       alert('Por favor, selecciona un archivo primero');
     }

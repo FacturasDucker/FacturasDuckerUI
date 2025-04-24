@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BasicUserInfo } from '../../interfaces/basicUserInfo';
 import { BasicInfoComponent } from '../../components/basic-info/basic-info.component';
+import { DataBillAdapter } from '../../adapters/data-bill-adapter';
 
 @Component({
   selector: 'bill-verificacion-template',
@@ -11,6 +12,8 @@ import { BasicInfoComponent } from '../../components/basic-info/basic-info.compo
   styleUrl: './verificacion-template.component.css'
 })
 export class VerificacionTemplateComponent {
+  // Input property to receive data bill information
+  @Input() dataBill : DataBillAdapter = new DataBillAdapter();
   // Template component for bill verification
   // Renders the basic information component for data review
 }

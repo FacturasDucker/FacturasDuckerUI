@@ -34,7 +34,7 @@ export class ProccessBillPageComponent implements OnInit {
   @ViewChild('stepper') stepper!: StepperComponent;
 
   // Inject billing process service
-  private proccessBillService = inject(ProccessBillService);
+  proccessBillService = inject(ProccessBillService);
 
   // Inject alert service
   private alertService = inject(AlertService);

@@ -1,8 +1,12 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { StepItem } from '../../shared/components/steper/steper.component';
+import { GetDataBillService } from './processBill/get-data-bill-service';
+import { catchError, EMPTY } from 'rxjs';
+import { DataBillAdapter } from '../adapters/data-bill-adapter';
 
 @Injectable({providedIn: 'root'})
 export class ProccessBillService {
+  private readonly _getDataBillService: GetDataBillService = inject(GetDataBillService);
   // Current active step in the billing process
   activeStep = 1;
 
@@ -14,6 +18,8 @@ export class ProccessBillService {
     { value: 4, header: 'Confirmación', content: 'Confirma los datos de tu factura' }          // Confirmation step
   ];
 
+  dataBill: DataBillAdapter = new DataBillAdapter(); // Instance of the data bill adapter
+
   // Handle step change in the billing process
   onStepChange(step: number): void {
     console.log(`Paso cambiado a: ${step}`);
@@ -21,8 +27,22 @@ export class ProccessBillService {
   }
 
   // Method to handle file upload
-  onUpload(): void {
-    console.log('Subiendo archivo...');
+  onUpload(file: File): void {
+    console.log('Subiendo archivo...', file);
+    this._getDataBillService
+      .getDataBill(file)
+      .pipe(
+        catchError((err: string) => {
+          console.error('Error al obtener los datos de la boleta:', err);
+          return EMPTY;
+        })
+      )
+      .subscribe((res) => {
+        const dataBillResponse = DataBillAdapter.toAdapter(res?.data);
+        console.log('Respuesta de la API:', dataBillResponse);
+        this.dataBill = dataBillResponse; // Update the data bill with the response
+        // Handle the adapted data here if needed
+      });
     // TODO: Implement file upload logic
     // For example: API call, file processing, etc.
   }

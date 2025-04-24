@@ -26,12 +26,12 @@
     >
       <!-- First step: Fiscal situation template -->
       <ng-template #content1>
-        <situation-fiscal-template />
+        <situation-fiscal-template [handleFileUploaded]="onUpload"/>
       </ng-template>
 
       <!-- Second step: Bill verification template -->
       <ng-template #content2>
-        <bill-verificacion-template />
+        <bill-verificacion-template [dataBill]="proccessBillService.dataBill"/>
       </ng-template>
 
       <!-- Third step: Ticket information template -->
