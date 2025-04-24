@@ -1,53 +1,97 @@
 <!-- Header -->
-<header class="fixed top-0 left-0 w-full z-50 py-8">
-  <div class="container mx-auto flex justify-between items-center">
-   <!-- Logo -->
-   <div class="h-10">
-     <a [routerLink]="['/']" class="flex items-center">
-       <div class="flex-shrink-0 flex items-center">
-        <img src="/img/image-removebg-preview (4) 1.png" alt="Logo Flecha Amarilla" class="h-12">
-        <div class="ml-2">
-            <div class="text-gray-800 font-bold text-sm">GRUPO</div>
-            <div class="text-gray-800 font-bold text-lg">Flecha Amarilla</div>
+<header class="fixed top-0 left-0 w-full z-50 py-4 md:py-8 bg-white/90 backdrop-blur-sm">
+  <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
+    <!-- Logo -->
+    <div class="h-10 flex-shrink-0">
+      <a [routerLink]="['/']" class="flex items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <img src="/img/image-removebg-preview (4) 1.png" alt="Logo Flecha Amarilla" class="h-10 md:h-12">
+          <div class="ml-2">
+            <div class="text-gray-800 font-bold text-xs sm:text-sm">GRUPO</div>
+            <div class="text-gray-800 font-bold text-base sm:text-lg">Flecha Amarilla</div>
+          </div>
         </div>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="md:hidden rounded-md p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100"
+      (click)="toggleMobileMenu()"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <!-- Navigation - Desktop -->
+    <nav class="hidden md:flex flex-1 items-center justify-end mx-4 lg:mx-10">
+      <ul class="flex">
+        <li class="mx-2 lg:mx-4">
+          <a [routerLink]="['/']" routerLinkActive="text-orange-500" [routerLinkActiveOptions]="{exact: true}" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+            INICIO
+          </a>
+        </li>
+        <li class="mx-2 lg:mx-4">
+          <a [routerLink]="['/faq']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+            FAQ
+          </a>
+        </li>
+        <li class="mx-2 lg:mx-4">
+          <a [routerLink]="['/contacto']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+            CONTACTO
+          </a>
+        </li>
+        <li class="mx-2 lg:mx-4">
+          <a [routerLink]="['/main']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
+            GFA
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Auth Buttons - Desktop -->
+    <div class="hidden md:flex gap-3">
+      <button [routerLink]="['/login']" class="px-4 py-2 bg-transparent border-2 border-black rounded-md font-semibold text-black text-sm transition-all hover:bg-white/10">
+        LOGIN
+      </button>
+      <button [routerLink]="['/register']" class="px-4 py-2 bg-orange-500 font-semibold rounded-md text-white text-sm transition-all hover:bg-orange-600">
+        REGISTRO
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Collapsed by default) -->
+  <div
+    class="md:hidden overflow-hidden transition-all duration-300"
+    [ngClass]="{'max-h-0': !isMobileMenuOpen, 'max-h-96': isMobileMenuOpen}"
+  >
+    <div class="container mx-auto px-4 pb-4 space-y-4">
+      <!-- Navigation Links -->
+      <nav class="flex flex-col space-y-3 border-b border-gray-200 pb-4">
+        <a [routerLink]="['/']" routerLinkActive="text-orange-500" [routerLinkActiveOptions]="{exact: true}" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500 py-2">
+          INICIO
+        </a>
+        <a [routerLink]="['/faq']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500 py-2">
+          FAQ
+        </a>
+        <a [routerLink]="['/contacto']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500 py-2">
+          CONTACTO
+        </a>
+        <a [routerLink]="['/main']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500 py-2">
+          GFA
+        </a>
+      </nav>
+
+      <!-- Auth Buttons -->
+      <div class="flex flex-col space-y-2">
+        <button [routerLink]="['/login']" class="w-full py-2 bg-transparent border-2 border-black rounded-md font-semibold text-black text-sm transition-all hover:bg-white/10">
+          LOGIN
+        </button>
+        <button [routerLink]="['/register']" class="w-full py-2 bg-orange-500 font-semibold rounded-md text-white text-sm transition-all hover:bg-orange-600">
+          REGISTRO
+        </button>
       </div>
-     </a>
-   </div>
-
-   <!-- Navigation -->
-   <nav class="flex-1 mx-10">
-     <ul class="flex justify-end">
-       <li class="mx-4">
-         <a [routerLink]="['/']" routerLinkActive="text-orange-500" [routerLinkActiveOptions]="{exact: true}" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
-           INICIO
-         </a>
-       </li>
-       <li class="mx-4">
-         <a [routerLink]="['/faq']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
-           FAQ
-         </a>
-       </li>
-       <li class="mx-4">
-         <a [routerLink]="['/contacto']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
-           CONTACTO
-         </a>
-       </li>
-       <li class="mx-4">
-         <a [routerLink]="['/main']" routerLinkActive="text-orange-500" class="text-black text-sm font-semibold uppercase transition-colors hover:text-orange-500">
-           GFA
-         </a>
-       </li>
-     </ul>
-   </nav>
-
-   <!-- Auth Buttons -->
-   <div class="flex gap-3">
-     <button [routerLink]="['/login']" class="px-5 py-2 bg-transparent border-2 border-black rounded-md font-semibold text-black text-sm transition-all hover:bg-white/10">
-       LOGIN
-     </button>
-     <button [routerLink]="['/register']" class="px-5 py-2 bg-orange-500 font-semibold rounded-md text-white text-sm transition-all hover:bg-orange-600">
-       REGISTRO
-     </button>
-   </div>
+    </div>
   </div>
 </header>
