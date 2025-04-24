@@ -1,0 +1,48 @@
+<div *ngIf="show" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300">
+  <div
+    class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 transform transition-transform duration-300"
+    [ngClass]="{'scale-100 opacity-100': show, 'scale-95 opacity-0': !show}"
+    (click)="stopPropagation($event)">
+
+    <!-- Modal header -->
+    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+      <!-- Icon based on modal type -->
+      <div class="flex items-center">
+        <svg *ngIf="modalType !== 'default'" class="h-6 w-6 mr-2"
+          [ngClass]="{
+            'text-orange-500': modalType === 'welcome',
+            'text-blue-600': modalType === 'final',
+            'text-yellow-500': modalType === 'warning',
+            'text-green-600': modalType === 'success'
+          }"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="modalIcon"></path>
+        </svg>
+        <h3 class="text-lg font-semibold text-gray-900">{{ title }}</h3>
+      </div>
+
+      <button
+        class="text-gray-400 hover:text-gray-500 focus:outline-none"
+        (click)="onClose()">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Modal content -->
+    <div class="px-6 py-4">
+      <ng-content></ng-content>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="px-6 py-4 border-t border-gray-200 flex justify-end">
+      <button
+        [ngClass]="buttonColorClass"
+        class="text-white py-2 px-4 rounded transition-colors shadow"
+        (click)="onButtonClick()">
+        {{ buttonText }}
+      </button>
+    </div>
+  </div>
+</div>
