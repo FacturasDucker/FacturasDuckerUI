@@ -24,6 +24,8 @@ export class ProccessBillService {
     DownloadInvoiceService
   ); // Injecting the download invoice service
 
+  private invoiceResponse: CreateInvoiceAdapter = new CreateInvoiceAdapter(); // Instance of the create invoice adapter
+
   activeStep = 1;
 
   // Definition of steps in the billing workflow
@@ -104,10 +106,39 @@ export class ProccessBillService {
       )
       .subscribe((res) => {
         console.log('Factura creada:', res);
-        const createInvoiceAdapter = CreateInvoiceAdapter.toAdapter(res);
-        this._downloadInvoiceService.downloadInvoice(createInvoiceAdapter);
+        this.invoiceResponse = CreateInvoiceAdapter.toAdapter(res);
       });
-    // TODO: Implement process completion logic
-    // For example: send data, redirect, etc.
+    this._downloadInvoiceService
+      .downloadInvoice(this.invoiceResponse)
+      .pipe(
+        catchError((err: string) => {
+          console.error('Error al descargar la factura:', err);
+          return EMPTY;
+        })
+      )
+      .subscribe((resApi) => {
+        const res = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Comprobante Version="4.0" Serie="A" Folio="10001" Fecha="2025-04-22T15:11:23" Sello="hxkSSUwfUW31FK7Yvwe+2n91KkMElfpaM4CLLTq3G55Z0BnpW05H1+gZghHH8wyCmLZT9hSPS2hTeoqUR28PHOzLeve8F884xWhnCMreL//5Jl0h5tcKKtKk6SK412OUHxiFFZbjaKsZNNpZVsJStD29rpm5q9UgJkhuG2/JWaaRtsHzJ8OAifDYd1yPVVyt4IUkWLwQna7c1+2Qi7BB7cRIPeflckFrBMsXqePLxA/wpSNtB/MKm2qD52vQL01Vm3XzmixSsWn6NxX2nw1/XVzCVDC17ALMsF7uilWxk2FijT18XKWlngTNuNom4yZvqgPqTO8EJxjPB2mIshAEnw==" FormaPago="01" NoCertificado="292233162870206001759766198444326234574038513973" Certificado="CERTIFICADOB64..." SubTotal="7000.0" Moneda="MXN" Total="7000.0" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="06000" xmlns="http://www.sat.gob.mx/cfd/4"><Emisor Rfc="FACW951024M98" Nombre="Empresa Ejemplo S.A. de C.V." RegimenFiscal="601"/><Receptor Rfc="FACW951024M98" Nombre="Cliente Pérez" DomicilioFiscalReceptor="06000" RegimenFiscalReceptor="605" UsoCFDI="G03"/><Conceptos><Concepto ClaveProdServ="10101501" Cantidad="1.0" ClaveUnidad="H87" Unidad="Servicio" Descripcion="Servicio de consultoría" ValorUnitario="5000.0" Importe="5000.0" ObjetoImp="01"/><Concepto ClaveProdServ="10101501" Cantidad="2.0" ClaveUnidad="H87" Unidad="Hora" Descripcion="Desarrollo de software" ValorUnitario="1000.0" Importe="2000.0" ObjetoImp="01"/></Conceptos></Comprobante>'; 
+        // Handle the downloaded blob (PDF or other document)
+        const contentType = 'text/xml';
+
+        // Create a blob URL from the response
+        const blob = new Blob([resApi], { type: contentType });
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a download link
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `factura-${
+          this.invoiceResponse.folio || 'descargada'
+        }.xml`;
+        document.body.appendChild(a);
+        a.click();
+
+        // Clean up
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+
+        console.log('Factura descargada exitosamente ', resApi);
+      });
   }
 }
